@@ -8,15 +8,19 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    min-height: 100vh;
 }
 
 #page-wrapper {
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 #page-cnt-wrapper {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 main {
@@ -73,6 +77,10 @@ main {
 #toggle-login-form h5, #toggle-register-form h5 {
     color: #FFF;
     margin-bottom: 0px;
+}
+
+#login-form h5 {
+    margin-bottom: 0px !important;
 }
 
 #toggle-login-form i, #toggle-register-form i {
@@ -233,4 +241,30 @@ button {
 
 .icon-mail-alt:before {
     margin-top: -1px !important;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background-image: none !important;
+}
+
+.invalid-feedback {
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.invalid-visible {
+    visibility: visible;
+}
+
+#error {
+    position: absolute;
+    top: 50px;
+    padding: 20px;
+    background-color: #FFF;
+    color: #dc3545;
+    z-index: 10001;
+    padding: 20px 30px;
+    margin-top: 25px;
+    border: 5px solid #dc3545;
 }

@@ -13,4 +13,8 @@ $(document).ready(function(){
             return attr == 'text' ? 'password' : 'text';
         });
     });
+
+    $('.form-control').on('click', function() {
+        $(this).removeClass('is-invalid');
+    })
 });
