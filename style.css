@@ -86,7 +86,7 @@ main {
     font-style: italic;
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .hidden-el {
@@ -137,6 +137,10 @@ input[type=checkbox] {
 .star {
     color: #e60202;
     margin-left: 0.12rem;
+}
+
+#reminder a {
+    font-size: 0.95rem;
 }
 
 label {
