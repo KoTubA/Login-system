@@ -27,7 +27,7 @@
                         header('Location: panel.php');
 
                         if(!empty($_POST['remember-me'])) {
-                            setcookie('name', $login, time() + (10 * 365 * 24 * 60 * 60));
+                            setcookie('login', $login, time() + (10 * 365 * 24 * 60 * 60));
                             setcookie('pass', $pass, time() + (10 * 365 * 24 * 60 * 60));
                             setcookie('checked', 'checked', time() + (10 * 365 * 24 * 60 * 60));
                             unset($_SESSION['error']);
@@ -41,6 +41,10 @@
                     $_SESSION['e_logon'] = true;
                 }
                 
+                $_SESSION['fl_login'] = $login;
+                $_SESSION['fl_pass'] = $pass;
+                if(!empty($_POST['remember-me'])) $_SESSION['fl_remember-me'] = 'checked';
+
                 unset($_SESSION['space']);
                 $result->close();
         }
