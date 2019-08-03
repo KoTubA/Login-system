@@ -79,10 +79,6 @@ main {
     margin-bottom: 0px;
 }
 
-#login-form h5 {
-    margin-bottom: 0px !important;
-}
-
 #toggle-login-form i, #toggle-register-form i {
     color: #FFF;
     font-size: 64px;
@@ -248,13 +244,29 @@ button {
 }
 
 .invalid-feedback {
-    display: flex;
+    display: none;
     justify-content: center;
     visibility: hidden;
+    padding: 10px;
+    font-weight: 700;
+    background-color: #fecacf;
+    color: #330303;
+    margin: 10px 0px;
+}
+
+.invalid-feedback:first-child {
+    margin-top: -10px;
+    margin-bottom: 0px;
+}
+
+.invalid-feedback:last-child {
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .invalid-visible {
     visibility: visible;
+    display: flex;
 }
 
 #error {

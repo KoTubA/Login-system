@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     if((!isset($_POST['l_login']))||(!isset($_POST['l_pass']))) {
         header('Location: index.php');
@@ -9,10 +10,10 @@
     $pass = $_POST['l_pass'];
     
     require_once('connect.php');
-
+    
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
     if ($conn->connect_errno) {
-        echo '<div id="error">Error: '.$conn->connect_errno.'</div>';
+        $_SESSION['error'] = "Error: ".$conn->connect_errno;
     }
     else {
         $sql = "SELECT * FROM `users` WHERE login='$login' || mail='$login'";
@@ -33,21 +34,23 @@
                         }
                     }
                     else {
-                        $_SESSION['error'] = true;
-                        unset($_SESSION['space']);
+                        $_SESSION['e_logon'] = true;
                     }
                 }
                 else {
-                    $_SESSION['error'] = true;
-                    unset($_SESSION['space']);
+                    $_SESSION['e_logon'] = true;
                 }
-
+                
+                unset($_SESSION['space']);
                 $result->close();
         }
         else {
-            echo '<div id="error">Error: Błąd zapytania do bazy!</div>';
+            $_SESSION['error'] = 'Error: Błąd zapytania do bazy!';
         }
 
         $conn->close();
     }
+
+    header('Location: index.php');
+    exit();
 ?>
