@@ -27,7 +27,7 @@ main {
     width: 100%;
 }
 
-#system-login-wrapper {
+#system-login-wrapper, #account-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,14 +35,28 @@ main {
     min-height: 100vh;
 }
 
-#system-login-container {
+#system-login-container, #system-account, #system-registration {
     width: 100%;
     height: 500px;
     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: #FFF;
     position: relative;
+}
+
+#system-account {
+    height: 300px;
+    justify-content: space-around;
+}
+
+#system-registration {
+    height: 100px;
+}
+
+#system-registration a {
+    margin-left: 2px;
 }
 
 #login-wrapper, #register-wrapper, #toggle-login-form, #toggle-register-form, #toggle-form {
@@ -63,6 +77,10 @@ main {
 
 .move-el {
     transform: translateX(-100%);
+}
+
+#logout-account{
+    margin: 10px 50px;
 }
 
 #toggle-login-form, #toggle-register-form, #toggle-form {
@@ -109,14 +127,19 @@ h5 {
     color: var(--main-color);
     font-size: 30px;
     font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
-#login-system, #register-system {
+#login-system, #register-system, #delete-account {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+#delete-account {
+    width: 250px;
 }
 
 #login-form, #register-form {
@@ -128,9 +151,9 @@ h5 {
 }
 
 input {
-    margin: 8px 0px;
     padding-left: 2.3rem !important;
     border: 1px solid #ced4da;
+    position: relative;
 }
 
 input[type=checkbox] {
@@ -141,6 +164,11 @@ input[type=checkbox] {
 .star {
     color: #e60202;
     margin-left: 0.12rem;
+}
+
+#reminder {
+    margin-top: 10px;
+    text-align: center;
 }
 
 #reminder a {
@@ -177,22 +205,23 @@ button {
     justify-content: flex-start;
 }
 
-#reminder {
-    margin-top: 10px;
-}
-
 .wrapp-input {
     width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 8px 0px;
 }
 
 .icon-input, .icon-input-second {
     position: absolute;
     left: 0;
-    margin-left: 10px;
+    padding-left: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 2;
 }
 
 .icon-input i, .icon-input-second i {
@@ -223,7 +252,7 @@ button {
     font-size: 0.8rem;
 }
 
-.form-control:focus +.icon-input i{
+.form-control:focus+.icon-input i{
     color: var(--main-color);
 }
 
@@ -240,7 +269,55 @@ button {
 }
 
 .form-control.is-invalid, .was-validated .form-control:invalid {
-    background-image: none !important;
+    background-image: none;
+}
+
+.error-message {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #c80000;
+    border-radius: 14px;
+    padding: 4px 25px 4px 10px;
+    right: 5px;
+    display: inline-block;
+    color: #c80000;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity .4s;
+    -o-transition: opacity .4s;
+    -moz-transition: opacity .4s;
+    transition: opacity .4s;
+    z-index: 1;
+}
+
+.alert-validate:hover .error-message {
+    opacity: 1;
+    visibility: visible;
+}
+
+.alert-validate::before {
+    position: absolute;
+    font-family: "fontello";
+    content: '\e804';
+    color: #dc3545;
+    margin-right: 10px;
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .7em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: .7em;
+    z-index: 2;
+    right: 0;
 }
 
 .invalid-feedback {
@@ -257,6 +334,7 @@ button {
 .invalid-feedback:first-child {
     margin-top: -10px;
     margin-bottom: 0px;
+    text-align: center;
 }
 
 .invalid-feedback:last-child {

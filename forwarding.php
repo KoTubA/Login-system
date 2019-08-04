@@ -1,6 +1,7 @@
 <?php 
+
     session_start();
-    unset($_SESSION['online']);
-    unset($_SESSION['id']);
+    unset($_SESSION['registration']);
     header('Location: index.php');
+    
 ?>

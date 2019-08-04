@@ -16,5 +16,6 @@ $(document).ready(function(){
 
     $('.form-control').on('click', function() {
         $(this).removeClass('is-invalid');
+        $(this).parent().removeClass('alert-validate');
     })
 });

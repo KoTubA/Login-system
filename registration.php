@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['online'])) {
+    if(!isset($_SESSION['registration'])) {
         header('Location: index.php');
         exit();
     }
@@ -17,6 +17,7 @@
     <meta name="description" content=""/>
     <meta name="robots" content="index,follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="refresh" content="5; url=forwarding.php" />
     <title>System logowania i rejestracji</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,27 +29,16 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
         </script>
     <![endif]-->
+    <script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>"></script>
 </head>
 <body>
     <div id="page-wrapper">
         <div id="page-cnt-wrapper">
             <main>
-                <div id="account-wrapper" class="container">
+                <div id="system-login-wrapper" class="container">
                     <div class="row col-12 col-md-10">
-                        <div id="system-account">
-                            <div id="logout-account"><a href="logout.php">Wyloguj się</a></div>
-                            <form id="delete-account" action="delete-account.php" method="POST">
-                                <div class="invalid-feedback<?php if(isset($_SESSION['de_logon'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_logon'])) echo "Błędny login lub hasło"?><?php if(isset($_SESSION['d_error'])) echo $_SESSION['d_error']?></div>
-                                <div class="wrapp-input">
-                                    <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="text" name="d_login" placeholder="Login lub e-mail" />
-                                    <span class="icon-input"><i class="icon-user"></i></span>
-                                </div>
-                                <div class="wrapp-input">
-                                    <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="password" name="d_pass" placeholder="Hasło"/>
-                                    <span class="icon-input"><i class="icon-lock"></i></span>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Usuń konto</button>
-                            </form>
+                        <div id="system-registration">
+                            Zarejestrowano! Przekierowanie nastąpi za 5s, lub kliknij w ten <a href="forwarding.php">link</a>
                         </div>
                     </div>
                 </div>
@@ -61,8 +51,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="visual-effects.js"></script>
     <?php 
-        if(isset($_SESSION['d_error']))unset($_SESSION['d_error']);
-        if(isset($_SESSION['de_logon']))unset($_SESSION['de_logon']);
+        unset($_SESSION['registration']);
     ?>
 </body>
 </html>

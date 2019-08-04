@@ -41,6 +41,12 @@
       "css": "eye-off",
       "code": 59395,
       "src": "fontawesome"
+    },
+    {
+      "uid": "17ebadd1e3f274ff0205601eef7b9cc4",
+      "css": "help-circled",
+      "code": 59396,
+      "src": "fontawesome"
     }
   ]
 }
