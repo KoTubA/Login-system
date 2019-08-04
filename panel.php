@@ -36,21 +36,20 @@
                 <div id="account-wrapper" class="container">
                     <div class="row col-12 col-md-10">
                         <div id="system-account-container">
-                            <div id="logout-account" class="col-6"><a href="logout.php">Wyloguj się</a></div>
-                            <div id="system-account-wrapper" class="col-6">
-                                <h5>USUŃ KONTO</h5>
-                                <form id="delete-account" action="delete-account.php" method="POST">
-                                    <div class="invalid-feedback<?php if(isset($_SESSION['de_logon'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_logon'])) echo "Błędny login lub hasło"?><?php if(isset($_SESSION['d_error'])) echo $_SESSION['d_error']?></div>
-                                    <div class="wrapp-input">
-                                        <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="text" name="d_login" placeholder="Login lub e-mail" />
-                                        <span class="icon-input"><i class="icon-user"></i></span>
+                            <div id="system-account-navbar" class="col-4">
+                                <div class="system-account-options"><a href="panel.php"><i class="icon-home"></i>Strona główna</a></div>
+                                <div class="system-account-options"><a href="panel-settings.php"><i class="icon-cog"></i>Opcje</a></div>
+                                <div class="system-account-options"><a href="logout.php"><i class="icon-logout"></i>Wyloguj mnie</a></div>
+                            </div>
+                            <div id="system-account-home" class="system-account-items col-8">
+                                <div class="system-account-wrapper col-12">
+                                    <h5>DANE KONTA</h5>
+                                    <div id="account-photo"><img src="img/defult-account.jpg" alt="defult-photo"/></div>
+                                    <div id="account-info">
+                                        <h4><?php echo $_SESSION['login_copy']?></h4>
+                                        <p><span>Adres e-mail: </span><?php echo $_SESSION['mail_copy']?></p>
                                     </div>
-                                    <div class="wrapp-input">
-                                        <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="password" name="d_pass" placeholder="Hasło"/>
-                                        <span class="icon-input"><i class="icon-lock"></i></span>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Usuń konto</button>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,6 +65,9 @@
     <?php 
         if(isset($_SESSION['d_error']))unset($_SESSION['d_error']);
         if(isset($_SESSION['de_logon']))unset($_SESSION['de_logon']);
+        if(isset($_SESSION['p_error']))unset($_SESSION['p_error']);
+        if(isset($_SESSION['p_correct']))unset($_SESSION['p_correct']);
+        if(isset($_SESSION['pe_logon']))unset($_SESSION['pe_logon']);
     ?>
 </body>
 </html>

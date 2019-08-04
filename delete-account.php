@@ -3,7 +3,7 @@
     session_start();
 
     if((!isset($_POST['d_login']))||(!isset($_POST['d_pass']))) {
-        header('Location: panel.php');
+        header('Location: panel-settings.php');
         exit();
     }
     require_once('connect.php');
@@ -23,13 +23,15 @@
                 if($resultCheck > 0) {
                     $row = $result->fetch_assoc();
                     
-                    if($_SESSION['id']==$row['id']) {
+                    if($_SESSION['id_copy']==$row['id']) {
                         if(password_verify($pass,$row['password'])){
                             $sqlDelete = "DELETE FROM `users` WHERE login='$login' || mail='$login'";
                             if(@$conn->query($sqlDelete)) {
-                                unset($_SESSION['online']);
-                                header('Location: index.php');
+                                $_SESSION['d_correct'] = 'Konto zostało usunięte!';
+                                header('Location: logout.php');
                                 if(isset($_SESSION['d_error']))unset($_SESSION['d_error']);
+                                $result->close();
+                                $conn->close();
                                 exit();
                             }
                             else {
@@ -37,15 +39,15 @@
                             }
                         }
                         else {
-                            $_SESSION['de_logon'] = true;
+                            $_SESSION['de_logon'] = 'Błędny login lub hasło';
                         }
                     }
                     else {
-                        $_SESSION['de_logon'] = true;
+                        $_SESSION['de_logon'] = 'Błędny login lub hasło';
                     }
                 }
                 else {
-                    $_SESSION['de_logon'] = true;
+                    $_SESSION['de_logon'] = 'Błędny login lub hasło';
                 }
 
                 $result->close();
@@ -57,6 +59,6 @@
         $conn->close();
     }
 
-    header('Location: index.php');
+    header('Location: panel-settings.php');
     exit();
 ?>

@@ -24,7 +24,9 @@
 
                     if(password_verify($pass,$row['password'])){
                         $_SESSION['online'] = true;
-                        $_SESSION['id'] = $row['id'];
+                        $_SESSION['id_copy'] = $row['id'];
+                        $_SESSION['login_copy'] = $row['login'];
+                        $_SESSION['mail_copy'] = $row['mail'];
                         header('Location: panel.php');
 
                         if(!empty($_POST['remember-me'])) {
@@ -37,6 +39,8 @@
                         if(isset($_SESSION['fl_login']))unset($_SESSION['fl_login']);
                         if(isset($_SESSION['fl_pass']))unset($_SESSION['fl_pass']);
                         if(isset($_SESSION['fl_remember-me']))unset($_SESSION['fl_remember-me']);
+                        $result->close();
+                        $conn->close();
                         exit();
                     }
                     else {
