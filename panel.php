@@ -35,20 +35,23 @@
             <main>
                 <div id="account-wrapper" class="container">
                     <div class="row col-12 col-md-10">
-                        <div id="system-account">
-                            <div id="logout-account"><a href="logout.php">Wyloguj się</a></div>
-                            <form id="delete-account" action="delete-account.php" method="POST">
-                                <div class="invalid-feedback<?php if(isset($_SESSION['de_logon'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_logon'])) echo "Błędny login lub hasło"?><?php if(isset($_SESSION['d_error'])) echo $_SESSION['d_error']?></div>
-                                <div class="wrapp-input">
-                                    <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="text" name="d_login" placeholder="Login lub e-mail" />
-                                    <span class="icon-input"><i class="icon-user"></i></span>
-                                </div>
-                                <div class="wrapp-input">
-                                    <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="password" name="d_pass" placeholder="Hasło"/>
-                                    <span class="icon-input"><i class="icon-lock"></i></span>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Usuń konto</button>
-                            </form>
+                        <div id="system-account-container">
+                            <div id="logout-account" class="col-6"><a href="logout.php">Wyloguj się</a></div>
+                            <div id="system-account-wrapper" class="col-6">
+                                <h5>USUŃ KONTO</h5>
+                                <form id="delete-account" action="delete-account.php" method="POST">
+                                    <div class="invalid-feedback<?php if(isset($_SESSION['de_logon'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_logon'])) echo "Błędny login lub hasło"?><?php if(isset($_SESSION['d_error'])) echo $_SESSION['d_error']?></div>
+                                    <div class="wrapp-input">
+                                        <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="text" name="d_login" placeholder="Login lub e-mail" />
+                                        <span class="icon-input"><i class="icon-user"></i></span>
+                                    </div>
+                                    <div class="wrapp-input">
+                                        <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="password" name="d_pass" placeholder="Hasło"/>
+                                        <span class="icon-input"><i class="icon-lock"></i></span>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Usuń konto</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

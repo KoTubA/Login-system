@@ -35,7 +35,7 @@ main {
     min-height: 100vh;
 }
 
-#system-login-container, #system-account, #system-registration {
+#system-login-container, #system-account-container, #system-registration {
     width: 100%;
     height: 500px;
     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.4);
@@ -46,9 +46,8 @@ main {
     position: relative;
 }
 
-#system-account {
+#system-account-container {
     height: 300px;
-    justify-content: space-around;
 }
 
 #system-registration {
@@ -59,7 +58,7 @@ main {
     margin-left: 2px;
 }
 
-#login-wrapper, #register-wrapper, #toggle-login-form, #toggle-register-form, #toggle-form {
+#login-wrapper, #register-wrapper, #toggle-login-form, #toggle-register-form, #toggle-form, #system-account-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,7 +79,9 @@ main {
 }
 
 #logout-account{
-    margin: 10px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #toggle-login-form, #toggle-register-form, #toggle-form {
@@ -116,7 +117,7 @@ main {
     opacity: 0;
 }
 
-#login-wrapper h5, #register-wrapper h5 {
+#login-wrapper h5, #register-wrapper h5, #system-account-wrapper h5 {
     color: #333;
 }
 
