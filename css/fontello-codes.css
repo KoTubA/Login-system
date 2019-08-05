@@ -1,11 +1,12 @@
 
-.icon-user:before { content: '\e800'; } /* '' */
-.icon-lock:before { content: '\e801'; } /* '' */
+.icon-ok-circled:before { content: '\e800'; } /* '' */
+.icon-user:before { content: '\e801'; } /* '' */
 .icon-eye:before { content: '\e802'; } /* '' */
 .icon-eye-off:before { content: '\e803'; } /* '' */
-.icon-help-circled:before { content: '\e804'; } /* '' */
+.icon-attention-circled:before { content: '\e804'; } /* '' */
 .icon-home:before { content: '\e805'; } /* '' */
 .icon-cog:before { content: '\e806'; } /* '' */
 .icon-logout:before { content: '\e807'; } /* '' */
+.icon-lock:before { content: '\e808'; } /* '' */
 .icon-mail-alt:before { content: '\f0e0'; } /* '' */
 .icon-user-plus:before { content: '\f234'; } /* '' */

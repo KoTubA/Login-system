@@ -31,7 +31,7 @@
                                 $flag = true;
                                 if (strlen($pass2)<5) {
                                     $flag = false;
-                                    $_SESSION['ec_pass2'] = "Minimalna długość: 5";
+                                    $_SESSION['ec_pass2'] = "Minimalna długość hasła: 5";
                                 }
                                 if($flag) {
                                     if($pass!==$pass2) {
