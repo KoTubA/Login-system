@@ -17,7 +17,7 @@
     <meta name="description" content=""/>
     <meta name="robots" content="index,follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="refresh" content="5; url=forwarding.php" />
+    <meta http-equiv="refresh" content="1; url=forwarding.php" />
     <title>System logowania i rejestracji</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -38,7 +38,7 @@
                 <div id="system-login-wrapper" class="container">
                     <div class="row col-12 col-md-10">
                         <div id="system-registration">
-                            Zarejestrowano! Przekierowanie nastąpi za 5s, lub kliknij w ten <a href="forwarding.php">link</a>
+                            Zarejestrowano! Przekierowanie nastąpi za 5s, lub kliknij w ten <a href="forwarding.php" id="forwarding">link</a>
                         </div>
                     </div>
                 </div>
