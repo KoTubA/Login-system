@@ -27,7 +27,6 @@
                         $_SESSION['id_copy'] = $row['id'];
                         $_SESSION['login_copy'] = $row['login'];
                         $_SESSION['mail_copy'] = $row['mail'];
-                        header('Location: panel.php');
 
                         if(!empty($_POST['remember-me'])) {
                             setcookie('login', $login, time() + (10 * 365 * 24 * 60 * 60));
@@ -35,12 +34,16 @@
                             setcookie('checked', 'checked', time() + (10 * 365 * 24 * 60 * 60));
                         }
 
+                        if(isset($_SESSION['e_logon']))unset($_SESSION['e_logon']);
                         if(isset($_SESSION['l_error']))unset($_SESSION['l_error']);
                         if(isset($_SESSION['fl_login']))unset($_SESSION['fl_login']);
                         if(isset($_SESSION['fl_pass']))unset($_SESSION['fl_pass']);
                         if(isset($_SESSION['fl_remember-me']))unset($_SESSION['fl_remember-me']);
+                        
                         $result->close();
                         $conn->close();
+
+                        header('Location: panel.php');
                         exit();
                     }
                     else {
