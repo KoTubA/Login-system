@@ -46,7 +46,7 @@
                                     <div id="delete-account-wrapper">
                                         <h5>USUŃ KONTO</h5>
                                         <form id="delete-account" action="delete-account.php" method="POST">
-                                            <div class="invalid-feedback<?php if(isset($_SESSION['de_logon'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_logon'])) echo $_SESSION['de_logon']?><?php if(isset($_SESSION['d_error'])) echo $_SESSION['d_error']?></div>
+                                            <div class="invalid-feedback<?php if(isset($_SESSION['de_logon'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_logon'])){echo $_SESSION['de_logon'];}else if(isset($_SESSION['d_error'])){echo $_SESSION['d_error'];}?></div>
                                             <div class="wrapp-input">
                                                 <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="text" name="d_login" placeholder="Login lub e-mail" />
                                                 <span class="icon-input"><i class="icon-user"></i></span>
@@ -61,17 +61,19 @@
                                     <div id="change-pass-account-wrapper">
                                         <h5>ZMIEŃ HASŁO</h5>
                                         <form id="delete-account" action="change-pass-account.php" method="POST">
-                                            <div class="invalid-feedback<?php if(isset($_SESSION['pe_logon'])||isset($_SESSION['p_error'])){echo ' invalid-visible';}else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['pe_logon'])){echo $_SESSION['pe_logon'];}else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}?></div>
+                                            <div class="invalid-feedback<?php if(isset($_SESSION['pe_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ec_change'])||isset($_SESSION['ec_pass2'])){echo ' invalid-visible';}else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['pe_logon'])){echo $_SESSION['pe_logon'];}else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}else if(isset($_SESSION['ec_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}else if (isset($_SESSION['ec_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?></div>
                                             <div class="wrapp-input">
                                                 <input class="form-control <?php if(isset($_SESSION['pe_logon'])) echo ' is-invalid'?>" type="text" name="p_login" placeholder="Login lub e-mail" />
                                                 <span class="icon-input"><i class="icon-user"></i></span>
                                             </div>
-                                            <div class="wrapp-input">
-                                                <input class="form-control <?php if(isset($_SESSION['pe_logon'])) echo ' is-invalid'?>" type="password" name="p_pass" placeholder="Hasło"/>
+                                            <div class="wrapp-input<?php if(isset($_SESSION['ec_change'])) echo ' alert-validate'?>">
+                                                <div class="error-message"><?php if(isset($_SESSION['ec_change'])) echo $_SESSION['ec_change']?></div>
+                                                <input class="form-control <?php if(isset($_SESSION['pe_logon'])||isset($_SESSION['ec_change'])) echo ' is-invalid'?>" type="password" name="p_pass" placeholder="Hasło"/>
                                                 <span class="icon-input"><i class="icon-lock"></i></span>
                                             </div>
-                                            <div class="wrapp-input">
-                                                <input class="form-control <?php if(isset($_SESSION['pe_logon'])) echo ' is-invalid'?>" type="password" name="p_pass2" placeholder="Nowe hasło"/>
+                                            <div class="wrapp-input<?php if(isset($_SESSION['ec_pass2'])) echo ' alert-validate'?>">
+                                                <div class="error-message"><?php if(isset($_SESSION['ec_pass2'])) echo $_SESSION['ec_pass2']?></div>
+                                                <input class="form-control <?php if(isset($_SESSION['pe_logon'])||isset($_SESSION['ec_change'])||isset($_SESSION['ec_pass2'])) echo ' is-invalid'?>" type="password" name="p_pass2" placeholder="Nowe hasło"/>
                                                 <span class="icon-input"><i class="icon-lock"></i></span>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Zmień hasło</button>
@@ -93,9 +95,12 @@
     <?php 
         if(isset($_SESSION['d_error']))unset($_SESSION['d_error']);
         if(isset($_SESSION['de_logon']))unset($_SESSION['de_logon']);
+
         if(isset($_SESSION['p_error']))unset($_SESSION['p_error']);
         if(isset($_SESSION['p_correct']))unset($_SESSION['p_correct']);
         if(isset($_SESSION['pe_logon']))unset($_SESSION['pe_logon']);
+        if(isset($_SESSION['ec_pass2']))unset($_SESSION['ec_pass2']);
+        if(isset($_SESSION['ec_change']))unset($_SESSION['ec_change']);
     ?>
 </body>
 </html>

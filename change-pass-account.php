@@ -25,20 +25,39 @@
                 if($resultCheck > 0) {
                     $row = $result->fetch_assoc();
                     
-                    if($pass!==$pass2) {
                         if($_SESSION['id_copy']==$row['id']) {
-                            if(password_verify($pass,$row['password'])){
-                                $sqlUpdate = "UPDATE `users` SET `password` = '$pass2_hash' WHERE login='$login' || mail='$login'";
-                                if(@$conn->query($sqlUpdate)) {
-                                    header('Location: panel-settings.php');
-                                    if(isset($_SESSION['p_error']))unset($_SESSION['p_error']);
-                                    $_SESSION['p_correct'] = 'Hasło zostało zmienione!';
-                                    $result->close();
-                                    $conn->close();
-                                    exit();
+                            if(password_verify($pass,$row['password'])) {
+                                
+                                $flag = true;
+                                if (strlen($pass2)<5) {
+                                    $flag = false;
+                                    $_SESSION['ec_pass2'] = "Minimalna długość: 5";
                                 }
-                                else {
-                                    $_SESSION['p_error'] = 'Error: Błąd zapytania do bazy!';
+                                if($flag) {
+                                    if($pass!==$pass2) {
+                                        $sqlUpdate = "UPDATE `users` SET `password` = '$pass2_hash' WHERE login='$login' || mail='$login'";
+                                        if(@$conn->query($sqlUpdate)) {
+                                            if(isset($_SESSION['p_error']))unset($_SESSION['p_error']);
+                                            if(isset($_SESSION['p_correct']))unset($_SESSION['p_correct']);
+                                            if(isset($_SESSION['pe_logon']))unset($_SESSION['pe_logon']);
+                                            if(isset($_SESSION['ec_pass2']))unset($_SESSION['ec_pass2']);
+                                            if(isset($_SESSION['ec_change']))unset($_SESSION['ec_change']);
+
+                                            $result->close();
+                                            $conn->close();
+
+                                            $_SESSION['p_correct'] = 'Hasło zostało zmienione!';
+                                            header('Location: panel-settings.php');
+                                            exit();
+                                        }
+                                        else {
+                                            $_SESSION['p_error'] = 'Error: Błąd zapytania do bazy!';
+                                        }
+                                    }
+                                    else {
+                                        $_SESSION['ec_change'] = 'Hasła są identyczne';
+                                        $_SESSION['ec_pass2'] = "Hasła są identyczne";
+                                    }
                                 }
                             }
                             else {
@@ -46,12 +65,8 @@
                             }
                         }
                         else {
-                            $_SESSION['de_logon'] = 'Błędny login lub hasło';
+                            $_SESSION['pe_logon'] = 'Błędny login lub hasło';
                         }
-                    }
-                    else {
-                        $_SESSION['pe_logon'] = 'Błędny login lub hasło';
-                    }
                 }
                 else {
                     $_SESSION['pe_logon'] = 'Błędny login lub hasło';

@@ -27,11 +27,14 @@
                         if(password_verify($pass,$row['password'])){
                             $sqlDelete = "DELETE FROM `users` WHERE login='$login' || mail='$login'";
                             if(@$conn->query($sqlDelete)) {
-                                $_SESSION['d_correct'] = 'Konto zostało usunięte!';
-                                header('Location: logout.php');
                                 if(isset($_SESSION['d_error']))unset($_SESSION['d_error']);
+                                if(isset($_SESSION['de_logon']))unset($_SESSION['de_logon']);
+
                                 $result->close();
                                 $conn->close();
+
+                                $_SESSION['d_correct'] = 'Konto zostało usunięte!';
+                                header('Location: logout.php');
                                 exit();
                             }
                             else {

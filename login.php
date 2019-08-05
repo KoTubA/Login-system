@@ -44,11 +44,11 @@
                         exit();
                     }
                     else {
-                        $_SESSION['e_logon'] = true;
+                        $_SESSION['e_logon'] = "Błędny login lub hasło";
                     }
                 }
                 else {
-                    $_SESSION['e_logon'] = true;
+                    $_SESSION['e_logon'] = "Błędny login lub hasło";
                 }
                 
                 $_SESSION['fl_login'] = $login;
