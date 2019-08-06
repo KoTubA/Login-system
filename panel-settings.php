@@ -21,6 +21,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="Stylesheet" type="text/css" href="style.css"/>
+    <link rel="Stylesheet" type="text/css" href="media.css"/>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700&display=swap" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="css/fontello.css"/>
@@ -34,14 +35,14 @@
         <div id="page-cnt-wrapper">
             <main>
                 <div id="account-wrapper" class="container">
-                    <div class="row col-12 col-md-10">
-                        <div id="system-account-container">
-                            <div id="system-account-navbar" class="col-4">
-                                <div class="system-account-options"><a href="panel.php"><i class="icon-home"></i>Strona główna</a></div>
-                                <div class="system-account-options"><a href="panel-settings.php"><i class="icon-cog"></i>Opcje</a></div>
-                                <div class="system-account-options"><a href="logout.php"><i class="icon-logout"></i>Wyloguj mnie</a></div>
+                    <div class="row col-12 col-xl-10">
+                        <div id="system-account-container" class="col-12">
+                            <div id="system-account-navbar">
+                                <div class="system-account-options"><a href="panel.php"><i class="icon-home"></i><span>Strona główna</span></a></div>
+                                <div class="system-account-options"><a href="panel-settings.php"><i class="icon-cog"></i><span>Opcje</span></a></div>
+                                <div class="system-account-options"><a href="logout.php"><i class="icon-logout"></i><span>Wyloguj mnie</span></a></div>
                             </div>
-                            <div id="system-account-settings" class="system-account-items col-8">
+                            <div id="system-account-home" class="system-account-items  col-12 col-md-10 col-lg-8">
                                 <div class="system-account-wrapper col-12">
                                     <div id="delete-account-wrapper">
                                         <h5>USUŃ KONTO</h5>
@@ -60,7 +61,7 @@
                                     </div>
                                     <div id="change-pass-account-wrapper">
                                         <h5>ZMIEŃ HASŁO</h5>
-                                        <form id="delete-account" action="change-pass-account.php" method="POST">
+                                        <form id="change-account" action="change-pass-account.php" method="POST">
                                             <div class="invalid-feedback<?php if(isset($_SESSION['pe_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ec_change'])||isset($_SESSION['ec_pass2'])){echo ' invalid-visible';}else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['pe_logon'])){echo $_SESSION['pe_logon'];}else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}else if(isset($_SESSION['ec_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}else if (isset($_SESSION['ec_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?></div>
                                             <div class="wrapp-input">
                                                 <input class="form-control <?php if(isset($_SESSION['pe_logon'])) echo ' is-invalid'?>" type="text" name="p_login" placeholder="Login lub e-mail" />

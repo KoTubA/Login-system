@@ -47,16 +47,24 @@ main {
 }
 
 #system-account-container {
-    height: 700px;
+    height: auto !important;
+    flex-direction: column;
+    padding: 0px;
+    justify-content: flex-start;
 }
 
 #system-account-navbar {
-    height: 100%;
+    height: auto !important;
+    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
     background-color: #333;
     padding: 0px;
+}
+
+#system-account-home {
+   padding: 30px 0px;
+   flex: auto;
 }
 
 .system-account-options {
@@ -67,15 +75,12 @@ main {
     cursor: pointer;
     background-color: #333;
     transition: .3s all;
-    border-top: 1px solid #222;
+    border-left: 1px solid #222;
+    border-bottom: 1px solid #222;
 }
 
 .system-account-options:first-child {
-    border-top: 0px !important;
-}
-
-.system-account-options:last-child {
-    border-bottom: 1px solid #222;
+    border-left: 0px !important;
 }
 
 .system-account-options:hover {
@@ -90,7 +95,8 @@ main {
     color: #e9e9e9 !important;
     width: 100%;
     height: 100%;
-    display: block;
+    display: flex;
+    justify-content: center;
     padding: 20px 30px;
 }
 
@@ -162,6 +168,30 @@ main {
     padding: 30px;
     position: relative;
     transition: .5s all cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+#toggle-nav {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-nav-items {
+    justify-content: center;
+    display: flex;
+    background-color: var(--main-color);
+    color: #FFF;
+    padding: 15px;
+    cursor: pointer;
+    transition: .3 all;
+}
+
+.toggle-nav-items-focus {
+    background-color: #0069d9 !important;
+}
+
+.toggle-nav-items:hover {
+    background-color: #0069d9;
 }
 
 #system-registration-loader {
@@ -343,7 +373,7 @@ h5 {
     width: 100%;
 }
 
-#delete-account {
+#delete-account, #change-account {
     width: 80%;
 }
 
@@ -391,6 +421,7 @@ label {
     justify-content: center;
     align-items: center;
     margin-bottom: 0px;
+    color: #333;
 }
 
 button[type=submit] {
@@ -494,7 +525,7 @@ button {
     position: absolute;
     right: 10px;
     top: 33px;
-    background-color: #e7e7e7;
+    background-color: #f1f0f0;
     user-select: none;
     cursor: default;
     opacity: 0;
@@ -502,7 +533,7 @@ button {
     margin: 10px 0px 3px;
     padding: 8px 15px 7px;
     transition: all 0.2s ease-in 0s;
-    box-shadow: 0px 6px 14px -5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
 }
 

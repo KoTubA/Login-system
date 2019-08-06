@@ -18,4 +18,22 @@ $(document).ready(function(){
         $(this).removeClass('is-invalid');
         $(this).parent().removeClass('alert-validate');
     })
+
+    $('#toggle-nav-items-login').on('click',function(){
+        $('#toggle-nav-items-register').removeClass('toggle-nav-items-focus');
+        $(this).addClass('toggle-nav-items-focus');
+        $('#toggle-register-form').addClass("hidden-el");
+        $('#register-wrapper').addClass("hidden-el");
+        $('#toggle-login-form').removeClass("hidden-el");
+        $('#login-wrapper').removeClass("hidden-el");
+    });
+
+    $('#toggle-nav-items-register').on('click',function(){
+        $('#toggle-nav-items-login').removeClass('toggle-nav-items-focus');
+        $(this).addClass('toggle-nav-items-focus');
+        $('#toggle-register-form').removeClass("hidden-el");
+        $('#register-wrapper').removeClass("hidden-el");
+        $('#toggle-login-form').addClass("hidden-el");
+        $('#login-wrapper').addClass("hidden-el");
+    });
 });
