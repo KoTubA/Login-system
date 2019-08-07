@@ -16,6 +16,16 @@
     h5 {
         font-size: 25px;
     }
+
+    .system-account-options {
+        width: 100%;
+        border-left: 1px solid #222;
+        border-bottom: 1px solid #222;
+    }
+
+    .system-account-options:first-child {
+        border-left: 0px !important;
+    }
 }
 
 @media (max-width: 850px) {
@@ -86,6 +96,11 @@
         padding: 0px 15px !important;
     }
 
+    #system-login-wrapper {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+
     #account-wrapper {
         padding: 0px !important;
     }
@@ -108,6 +123,7 @@
     #login-wrapper, #register-wrapper, #delete-account-wrapper, #change-pass-account-wrapper {
         width: 100% !important;
     }
+
 }
 
 @media (max-width: 395px) {
@@ -116,7 +132,7 @@
         padding: 80px 15px 30px 15px !important;
     }
 
-    #delete-account-wrapper, #change-pass-account-wrapper 
+    #delete-account-wrapper, #change-pass-account-wrapper, #system-registration-wrapper
     {
         padding-right: 15px;
         padding-left: 15px;
@@ -139,6 +155,11 @@
         padding: 0px 10px !important;
     }
 
+    #system-login-wrapper {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+
     #account-wrapper {
         padding: 0px !important;
     }
@@ -154,9 +175,5 @@
     {
         padding-right: 5px;
         padding-left: 5px;
-    }
-
-    #system-login-wrapper, #account-wrapper {
-        padding: 0px !important;
     }
 }

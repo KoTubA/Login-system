@@ -3,7 +3,7 @@
     session_start();
 
     if((!isset($_POST['p_login']))||(!isset($_POST['p_pass']))||(!isset($_POST['p_pass2']))) {
-        header('Location: panel-settings.php');
+        header('Location: panel.php');
         exit();
     }
     require_once('connect.php');
@@ -47,7 +47,7 @@
                                             $conn->close();
 
                                             $_SESSION['p_correct'] = 'Hasło zostało zmienione!';
-                                            header('Location: panel-settings.php');
+                                            header('Location: panel.php');
                                             exit();
                                         }
                                         else {
@@ -81,6 +81,6 @@
         $conn->close();
     }
 
-    header('Location: panel-settings.php');
+    header('Location: panel.php');
     exit();
 ?>

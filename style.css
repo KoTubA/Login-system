@@ -35,6 +35,54 @@ main {
     min-height: 100vh;
 }
 
+#account-wrapper .row{
+    width: 100%;
+    min-height: 100%;
+}
+
+#cnt-user-data {
+    padding: 20px 0px;
+}
+
+#change-data, #delete-account, #change-account {
+    padding: 0px !important;
+}
+
+.feedback .invalid-feedback {
+    padding: 18px;
+}
+
+.feedback {
+    padding: 0px !important;
+}
+
+.wrapper-user-data {
+    flex-direction: row;
+    padding: 8px 0px;
+}
+
+.wrapper-user-data button {
+    margin-right: 16px;
+}
+
+.custom-radio {
+    width: max-content !important;
+    margin-left: 25px !important;
+}
+
+.box-user-data input {
+    padding-left: 1rem !important;
+}
+
+.container-fluid {
+    background-color: #FFF;
+}
+
+#system-login-wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
 #system-login-container, #system-account-container, #system-registration {
     width: 100%;
     height: 500px;
@@ -51,6 +99,13 @@ main {
     flex-direction: column;
     padding: 0px;
     justify-content: flex-start;
+    box-shadow: none;
+}
+
+#system-account-menu {
+    background-color: #20313c;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
 }
 
 #system-account-navbar {
@@ -58,37 +113,79 @@ main {
     width: 100%;
     display: flex;
     align-items: flex-start;
-    background-color: #333;
     padding: 0px;
+    flex-direction: column;
+}
+
+#panel-user {
+    width: 100%;
+    background-color: #19262e;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #FFF;
+    text-align: center;
+    height: 70px;
+}
+
+#system-account-info {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding-left: 50px;
+    color: #FFF;
+    width: 100%;
+    background-color: var(--main-color);
 }
 
 #system-account-home {
-   padding: 30px 0px;
+   padding: 50px;
    flex: auto;
+   background-color: #304C5A;
 }
 
-.system-account-options {
-    width: 100%;
+.system-account-options, .system-account-options-user {
     padding: 0px !important;
-    font-size: 18px;
+    font-size: 17px;
     color: #e9e9e9;
     cursor: pointer;
-    background-color: #333;
     transition: .3s all;
-    border-left: 1px solid #222;
-    border-bottom: 1px solid #222;
+    width: 100%;
 }
 
-.system-account-options:first-child {
-    border-left: 0px !important;
+.system-account-options-user {
+    cursor: default;
+    padding: 20px !important;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #19262e;
+}
+
+#account-info-user {
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.3;
+    padding: 0px !important;
+}
+
+#account-info-group {
+    font-size: 16px;
+    color: #a6b9cc;
+}
+
+#account-info-login {
+    width: 100%;
+    color: #E4E4DD;
 }
 
 .system-account-options:hover {
-    background-color: #222;
+    background-color: #19262e;
 }
 
 .system-account-options i {
-    margin-right: 3px;
+    margin-right: 5px;
 }
 
 .system-account-options a {
@@ -96,7 +193,7 @@ main {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 20px 30px;
 }
 
@@ -145,19 +242,88 @@ main {
     text-align: center;
 }
 
-#account-info h4 {
+#user-name {
     font-weight: 700;
+    margin-bottom: 0.3rem;
+    font-size: 30px;
+    color: #494f53;
+}
+
+#user-group {
+    color:#676d76;
     font-size: 21px;
+    text-transform: capitalize;
 }
 
-#account-info p {
-    margin-top: 10px;
+#user-data {
+    width: 100%;
+    padding: 10px 50px;
+    font-family: 'Muli', sans-serif;
 }
 
-#account-photo img {
+#user-data-header {
+    color: #20313c;
+    font-size: 21px;
+    padding-top: 20px;
+    font-weight: 700;
+}
+
+#account-photo-min {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#account-photo img, #account-photo-min img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+#account-photo {
+    position: relative;
+}
+
+#account-photo:hover::after{
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+#account-photo::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #304C5A;
+    font-family: "fontello";
+    content: '\e809';
+    color: #FFF;
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: inherit;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    z-index: 2;
+    transition: .5s all cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    backface-visibility: hidden;
+}
+
+#account-photo-min img {
+    height: auto;
 }
 
 #login-wrapper, #register-wrapper, #toggle-login-form, #toggle-register-form, #toggle-form, .system-account-wrapper, #system-registration-wrapper, #system-registration-loader {
@@ -170,10 +336,18 @@ main {
     transition: .5s all cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
+.system-account-wrapper {
+    background-color: #e9e9e9;
+    height: 100%;
+    justify-content: flex-start;
+    padding-top: 50px;
+}
+
 #toggle-nav {
     display: none;
     justify-content: center;
     align-items: center;
+    border-bottom: 2px solid #ced4da
 }
 
 .toggle-nav-items {
@@ -365,7 +539,7 @@ h5 {
     text-align: center;
 }
 
-#login-system, #register-system, #delete-account {
+#login-system, #register-system {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -373,21 +547,12 @@ h5 {
     width: 100%;
 }
 
-#delete-account, #change-account {
-    width: 80%;
-}
-
-#login-form, #register-form, #delete-account-wrapper, #change-pass-account-wrapper {
+#login-form, #register-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 80%;
-}
-
-#delete-account-wrapper, #change-pass-account-wrapper {
-    padding: 20px;
-    width: 100%;
 }
 
 input {
@@ -535,6 +700,7 @@ button {
     transition: all 0.2s ease-in 0s;
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .error-message::after {
@@ -569,7 +735,6 @@ button {
 
 .alert-validate::before {
     position: absolute;
-    font-family: "fontello";
     content: '\e804';
     color: #dc3545;
     margin-right: 10px;
@@ -598,6 +763,7 @@ button {
     background-color: #fecacf;
     color: #330303;
     margin: 10px 0px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .invalid-feedback:first-child {

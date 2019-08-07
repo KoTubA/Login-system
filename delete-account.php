@@ -3,7 +3,7 @@
     session_start();
 
     if((!isset($_POST['d_login']))||(!isset($_POST['d_pass']))) {
-        header('Location: panel-settings.php');
+        header('Location: panel.php');
         exit();
     }
     require_once('connect.php');
@@ -62,6 +62,6 @@
         $conn->close();
     }
 
-    header('Location: panel-settings.php');
+    header('Location: panel.php');
     exit();
 ?>

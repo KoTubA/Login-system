@@ -33,53 +33,30 @@
 <body>
     <div id="page-wrapper">
         <div id="page-cnt-wrapper">
-            <main>
-                <div id="account-wrapper" class="container">
-                    <div class="row col-12 col-xl-10">
-                        <div id="system-account-container" class="col-12">
+            <main class="d-flex">
+                <div id="account-wrapper" class="container-fluid p-0">
+                    <div class="row col-12 col-xl-10 p-0 mw-100">
+                        <div id="system-account-menu" class="col-2">
+                            <div id="panel-user">User panel</div>
                             <div id="system-account-navbar">
+                                <div class="system-account-options-user">
+                                    <div id="account-photo-min" class="col-3">
+                                        <img src="img/defult-account.jpg" alt="defult-photo">
+                                    </div>
+                                    <div id="account-info-user" class="col-9">
+                                        <div id="account-info-login"><?php echo $_SESSION['login_copy']?></div>
+                                        <div id="account-info-group">User</div>
+                                    </div>
+                                </div>
                                 <div class="system-account-options"><a href="panel.php"><i class="icon-home"></i><span>Strona główna</span></a></div>
                                 <div class="system-account-options"><a href="panel-settings.php"><i class="icon-cog"></i><span>Opcje</span></a></div>
                                 <div class="system-account-options"><a href="logout.php"><i class="icon-logout"></i><span>Wyloguj mnie</span></a></div>
                             </div>
-                            <div id="system-account-home" class="system-account-items  col-12 col-md-10 col-lg-8">
+                        </div>
+                        <div id="system-account-container" class="col-10">
+                            <div id="system-account-info"><i class="icon-user"></i> Użytkownik: <?php echo $_SESSION['login_copy']?></div>
+                            <div id="system-account-home" class="system-account-items col-12">
                                 <div class="system-account-wrapper col-12">
-                                    <div id="delete-account-wrapper">
-                                        <h5>USUŃ KONTO</h5>
-                                        <form id="delete-account" action="delete-account.php" method="POST">
-                                            <div class="invalid-feedback<?php if(isset($_SESSION['de_logon'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_logon'])){echo $_SESSION['de_logon'];}else if(isset($_SESSION['d_error'])){echo $_SESSION['d_error'];}?></div>
-                                            <div class="wrapp-input">
-                                                <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="text" name="d_login" placeholder="Login lub e-mail" />
-                                                <span class="icon-input"><i class="icon-user"></i></span>
-                                            </div>
-                                            <div class="wrapp-input">
-                                                <input class="form-control <?php if(isset($_SESSION['de_logon'])) echo ' is-invalid'?>" type="password" name="d_pass" placeholder="Hasło"/>
-                                                <span class="icon-input"><i class="icon-lock"></i></span>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Usuń konto</button>
-                                        </form>
-                                    </div>
-                                    <div id="change-pass-account-wrapper">
-                                        <h5>ZMIEŃ HASŁO</h5>
-                                        <form id="change-account" action="change-pass-account.php" method="POST">
-                                            <div class="invalid-feedback<?php if(isset($_SESSION['pe_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ec_change'])||isset($_SESSION['ec_pass2'])){echo ' invalid-visible';}else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['pe_logon'])){echo $_SESSION['pe_logon'];}else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}else if(isset($_SESSION['ec_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}else if (isset($_SESSION['ec_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?></div>
-                                            <div class="wrapp-input">
-                                                <input class="form-control <?php if(isset($_SESSION['pe_logon'])) echo ' is-invalid'?>" type="text" name="p_login" placeholder="Login lub e-mail" />
-                                                <span class="icon-input"><i class="icon-user"></i></span>
-                                            </div>
-                                            <div class="wrapp-input<?php if(isset($_SESSION['ec_change'])) echo ' alert-validate'?>">
-                                                <div class="error-message"><?php if(isset($_SESSION['ec_change'])) echo $_SESSION['ec_change']?></div>
-                                                <input class="form-control <?php if(isset($_SESSION['pe_logon'])||isset($_SESSION['ec_change'])) echo ' is-invalid'?>" type="password" name="p_pass" placeholder="Hasło"/>
-                                                <span class="icon-input"><i class="icon-lock"></i></span>
-                                            </div>
-                                            <div class="wrapp-input<?php if(isset($_SESSION['ec_pass2'])) echo ' alert-validate'?>">
-                                                <div class="error-message"><?php if(isset($_SESSION['ec_pass2'])) echo $_SESSION['ec_pass2']?></div>
-                                                <input class="form-control <?php if(isset($_SESSION['pe_logon'])||isset($_SESSION['ec_change'])||isset($_SESSION['ec_pass2'])) echo ' is-invalid'?>" type="password" name="p_pass2" placeholder="Nowe hasło"/>
-                                                <span class="icon-input"><i class="icon-lock"></i></span>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Zmień hasło</button>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -93,15 +70,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="visual-effects.js"></script>
-    <?php 
-        if(isset($_SESSION['d_error']))unset($_SESSION['d_error']);
-        if(isset($_SESSION['de_logon']))unset($_SESSION['de_logon']);
-
-        if(isset($_SESSION['p_error']))unset($_SESSION['p_error']);
-        if(isset($_SESSION['p_correct']))unset($_SESSION['p_correct']);
-        if(isset($_SESSION['pe_logon']))unset($_SESSION['pe_logon']);
-        if(isset($_SESSION['ec_pass2']))unset($_SESSION['ec_pass2']);
-        if(isset($_SESSION['ec_change']))unset($_SESSION['ec_change']);
-    ?>
 </body>
 </html>

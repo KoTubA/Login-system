@@ -27,6 +27,8 @@
                         $_SESSION['id_copy'] = $row['id'];
                         $_SESSION['login_copy'] = $row['login'];
                         $_SESSION['mail_copy'] = $row['mail'];
+                        $_SESSION['type_copy'] = $row['type'];
+                        $_SESSION['s_name_copy'] = $row['s_name'];
 
                         if(!empty($_POST['remember-me'])) {
                             setcookie('login', $login, time() + (10 * 365 * 24 * 60 * 60));
