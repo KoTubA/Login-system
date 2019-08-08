@@ -38,9 +38,10 @@ main {
 #account-wrapper .row{
     width: 100%;
     min-height: 100%;
+    flex-wrap: nowrap;
 }
 
-#cnt-user-data {
+.cnt-user-data {
     padding: 20px 0px;
 }
 
@@ -96,6 +97,7 @@ main {
     top: 10%;
     padding: 0px !important;
     background-color: #FFF;
+    max-width: 444px;
     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.4)
 }
 
@@ -189,12 +191,14 @@ main {
     padding: 0px;
     justify-content: flex-start;
     box-shadow: none;
+    max-width: calc(100% - 250px);
 }
 
 #system-account-menu {
     background-color: #20313c;
     padding: 0px;
     font-family: 'Poppins', sans-serif;
+    min-width: 250px;
 }
 
 #system-account-navbar {
@@ -261,9 +265,21 @@ main {
     padding-left: 1rem !important;
     background-color: #304C5A;
     border: 1px solid #304C5A;
-    color: #e9e9e9 !important;
+    color: #e9e9e9;
     position: relative;
     padding-right: 40px !important;
+}
+
+#system-account-navbar .wrapp-input input:focus::placeholder {
+    color: #FFF !important;
+}
+
+#system-account-navbar .wrapp-input input:focus {
+    color: #FFF !important;
+}
+
+#system-account-navbar .wrapp-input input:focus + span i {
+    color: #FFF !important;
 }
 
 #system-account-navbar .wrapp-input input:focus {
@@ -275,7 +291,7 @@ main {
 }
 
 #system-account-navbar .wrapp-input .icon-input-second i {
-    color: #e9e9e9 !important;
+    color: #d4d4d4 !important;
 }
 
 #system-account-navbar .wrapp-input input::placeholder {
@@ -328,8 +344,12 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     background-color: var(--main-color);
 }
 
-.system-account-options:hover {
-    background-color: #19262e;
+.system-account-options-focus:hover a {
+    color: #e9e9e9 !important;
+}
+
+.system-account-options:hover a {
+    color: #157ccf;
 }
 
 .system-account-options i {
@@ -337,12 +357,13 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 .system-account-options a {
-    color: #e9e9e9 !important;
+    color: #e9e9e9;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: flex-start;
     padding: 15px 30px;
+    transition: .3s all;
 }
 
 .system-account-options a:hover {
@@ -412,6 +433,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .name-user-data {
     padding-left: 0px !important;
     flex-direction: column;
+    padding-right: 25px;
 }
 
 .name-user-data p {
@@ -420,7 +442,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     margin-bottom: 0px !important;
 }
 
-#user-data-header {
+.user-data-header {
     color: #20313c;
     font-size: 21px;
     padding-top: 20px;
@@ -483,6 +505,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 #account-photo-min img {
     height: auto;
+    min-height: 40px;
+    min-width: 40px;
 }
 
 #login-wrapper, #register-wrapper, #toggle-login-form, #toggle-register-form, #toggle-form, .system-account-wrapper, #system-registration-wrapper, #system-registration-loader {

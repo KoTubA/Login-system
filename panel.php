@@ -82,8 +82,8 @@
             <main class="d-flex">
                 <div id="account-wrapper" class="container-fluid p-0">
                     <div class="row col-12 col-xl-10 p-0 mw-100">
-                        <div id="system-account-menu" class="col-2">
-                            <div id="panel-user">User panel</div>
+                        <div id="system-account-menu" class="col-12 col-md-1 col-lg-2">
+                            <div id="panel-user"><span>User panel</span></div>
                             <div id="system-account-navbar">
                                 <div class="system-account-options-user">
                                     <div id="account-photo-min" class="col-3">
@@ -94,7 +94,7 @@
                                         <div id="account-info-group"><?php echo $_SESSION['type_copy']?></div>
                                     </div>
                                 </div>
-                                <div class="wrapp-input">
+                                <div class="wrapp-input wrapp-input-search">
                                     <input type="search" class="form-control ds-input" id="search-input" placeholder="Szukaj..."autocomplete="off">
                                     <span class="icon-input-second"><i class="icon-search"></i></span>
                                 </div>
@@ -104,7 +104,7 @@
                                 <div class="system-account-options"><a href="logout.php"><i class="icon-off"></i><span>Wyloguj mnie</span></a></div>
                             </div>
                         </div>
-                        <div id="system-account-container" class="col-10">
+                        <div id="system-account-container" class="col-12 col-md-11 col-lg-10">
                             <div id="system-account-info"><i class="icon-user"></i> Użytkownik: <?php if($_SESSION['s_name_copy']=="login"){echo $_SESSION['login_copy'];}else {if(($_SESSION['name_copy']=='')&&($_SESSION['surname_copy']=='')){echo 'User '.$id_user;}else{echo $_SESSION['name_copy'].' '.$_SESSION['surname_copy'];}}?></div>
                             <div id="system-account-home" class="system-account-items col-12">
                                 <div class="system-account-wrapper col-12">
@@ -115,20 +115,20 @@
                                         <h3 id="user-group"><?php echo $_SESSION['type_copy']?></h3>
                                     </div>
                                     <div id="user-data">
-                                        <h4 id="user-data-header">Dane konta</h4>
-                                        <div id="cnt-user-data">
-                                            <form  id="change-data" action="change-data.php" class="col-11" method="POST">
+                                        <h4 class="user-data-header">Dane konta</h4>
+                                        <div class="cnt-user-data">
+                                            <form  id="change-data" action="change-data.php" class="col-12 col-xl-11" method="POST">
                                                 <div class="wrapper-user-data row feedback">
-                                                    <div class="name-user-data col-4"></div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4"></div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
                                                             <div class="invalid-feedback<?php if(isset($_SESSION['datae_update'])||isset($_SESSION['data_error'])||isset($_SESSION['passe_update'])){echo ' invalid-visible';}else if (isset($_SESSION['data_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['datae_update'])){echo $_SESSION['datae_update'];}else if(isset($_SESSION['passe_update'])){echo $_SESSION['passe_update'];}else if(isset($_SESSION['data_error'])){echo $_SESSION['data_error'];}else if (isset($_SESSION['data_correct'])){echo $_SESSION['data_correct'];}?></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Login</div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Login</div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input<?php if(isset($_SESSION['edata_login'])) echo ' alert-validate'?>">
                                                             <div class="error-message"><?php if(isset($_SESSION['edata_login'])) echo $_SESSION['edata_login']?></div>
                                                             <input class="form-control <?php if(isset($_SESSION['edata_login'])) echo ' is-invalid'?>" type="text" name="data_login" <?php if(isset($_SESSION['dataf_login'])){echo "value='".$_SESSION['dataf_login']."'";} else if(isset($_SESSION['login_copy'])){echo "value='".$_SESSION['login_copy']."'";}?>/>
@@ -136,8 +136,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">E-mail</div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">E-mail</div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input<?php if(isset($_SESSION['edata_mail'])) echo ' alert-validate'?>">
                                                             <div class="error-message"><?php if(isset($_SESSION['edata_mail'])) echo $_SESSION['edata_mail']?></div>
                                                             <input class="form-control <?php if(isset($_SESSION['edata_mail'])) echo ' is-invalid'?>" type="text" name="data_mail" <?php if(isset($_SESSION['dataf_mail'])){echo "value='".$_SESSION['dataf_mail']."'";} else if(isset($_SESSION['mail_copy'])){echo "value='".$_SESSION['mail_copy']."'";}?>/>
@@ -145,20 +145,20 @@
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Imie<p>(opcjonalnie)</p></div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Imie<p>(opcjonalnie)</p></div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <input class="form-control" type="text" name="data_name" <?php if(isset($_SESSION['dataf_name'])){echo "value='".$_SESSION['dataf_name']."'";} else if(isset($_SESSION['name_copy'])){echo "value='".$_SESSION['name_copy']."'";}?>/>
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Nazwisko<p>(opcjonalnie)</p></div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Nazwisko<p>(opcjonalnie)</p></div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <input class="form-control" type="text" name="data_surname" <?php if(isset($_SESSION['dataf_surname'])){echo "value='".$_SESSION['dataf_surname']."'";} else if(isset($_SESSION['surname_copy'])){echo "value='".$_SESSION['surname_copy']."'";}?>/>
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Numer<p>(opcjonalnie)</p></div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Numer<p>(opcjonalnie)</p></div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input<?php if(isset($_SESSION['edata_number'])) echo ' alert-validate'?>">
                                                             <div class="error-message"><?php if(isset($_SESSION['edata_number'])) echo $_SESSION['edata_number']?></div>
                                                             <input class="form-control <?php if(isset($_SESSION['edata_number'])) echo ' is-invalid'?>" type="tel" name="data_number" <?php if(isset($_SESSION['dataf_number'])){echo "value='".$_SESSION['dataf_number']."'";} else if(isset($_SESSION['number_copy'])){echo "value='".$_SESSION['number_copy']."'";}?>/>
@@ -166,8 +166,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Nazwa użytkownika</div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Nazwa użytkownika</div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked" value="login" required <?php if(isset($_SESSION['dataf_s_name'])){if($_SESSION['dataf_s_name']=="login") echo 'checked';} else if(isset($_SESSION['s_name_copy'])){if($_SESSION['s_name_copy']=="login") echo 'checked';}?>>
                                                             <label class="custom-control-label" for="customControlValidation1">Login</label>
@@ -179,11 +179,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row justify-content-end">
-                                                    <button type="button" class="btn btn-primary col-3 change-data-btn">Zmień dane</button>
+                                                    <button type="button" class="btn btn-primary col-12 col-sm-4 col-3 change-data-btn">Zmień dane</button>
                                                 </div>
-                                                <div id="passowrd-confirm" class="col-4">
+                                                <div id="passowrd-confirm" class="col-7 col-lg-6">
                                                     <div id="passowrd-confirm-close"><i class="icon-cancel"></i></div>
-                                                    <div id="paddowrd-confirm-cnt" class="col-11">
+                                                    <div id="paddowrd-confirm-cnt" class="col-12 col-xl-11">
                                                         <h5>POTWIERDŹ ZMIANE</h5>
                                                         <div class="wrapp-input">
                                                             <input class="form-control <?php if(isset($_SESSION['passe_update'])) echo ' is-invalid'?>" type="password" name="data_pass" placeholder="Hasło"/>
@@ -194,28 +194,28 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <h4 id="user-data-header">Zmień hasło</h4>
-                                        <div id="cnt-user-data">
-                                            <form id="change-account" action="change-pass-account.php" class="col-11" method="POST">
+                                        <h4 class="user-data-header">Zmień hasło</h4>
+                                        <div class="cnt-user-data">
+                                            <form id="change-account" action="change-pass-account.php" class="col-12 col-xl-11" method="POST">
                                                 <div class="wrapper-user-data row feedback">
-                                                    <div class="name-user-data col-4"></div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4"></div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
                                                             <div class="invalid-feedback<?php if(isset($_SESSION['ep_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ep_change'])||isset($_SESSION['ep_pass2'])){echo ' invalid-visible';}else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['ep_logon'])){echo $_SESSION['ep_logon'];}else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}else if(isset($_SESSION['ep_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}else if (isset($_SESSION['ep_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Login lub e-mail</div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Login lub e-mail</div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
                                                             <input class="form-control <?php if(isset($_SESSION['ep_logon'])) echo ' is-invalid'?>" type="text" name="p_login" placeholder="Login lub e-mail" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Hasło</div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Hasło</div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input<?php if(isset($_SESSION['ep_change'])) echo ' alert-validate'?>">
                                                             <div class="error-message"><?php if(isset($_SESSION['ep_change'])) echo $_SESSION['ep_change']?></div>
                                                             <input class="form-control <?php if(isset($_SESSION['ep_logon'])||isset($_SESSION['ep_change'])) echo ' is-invalid'?>" type="password" name="p_pass" placeholder="Hasło"/>
@@ -223,8 +223,8 @@
                                                     </div>
                                                 </div>
                                                  <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Nowe hasło</div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Nowe hasło</div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input<?php if(isset($_SESSION['ep_pass2'])) echo ' alert-validate'?>">
                                                             <div class="error-message"><?php if(isset($_SESSION['ep_pass2'])) echo $_SESSION['ep_pass2']?></div>
                                                             <input class="form-control <?php if(isset($_SESSION['ep_logon'])||isset($_SESSION['ep_change'])||isset($_SESSION['ep_pass2'])) echo ' is-invalid'?>" type="password" name="p_pass2" placeholder="Nowe hasło"/>
@@ -232,39 +232,39 @@
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row justify-content-end">
-                                                    <button type="submit" class="btn btn-primary col-3">Zmień hasło</button>
+                                                    <button type="submit" class="btn btn-primary col-12 col-sm-4 col-3">Zmień hasło</button>
                                                 </div>
                                             </form>
                                         </div>
-                                        <h4 id="user-data-header">Usuń konto</h4>
-                                        <div id="cnt-user-data">
-                                            <form id="delete-account" action="delete-account.php" class="col-11" method="POST">
+                                        <h4 class="user-data-header">Usuń konto</h4>
+                                        <div class="cnt-user-data">
+                                            <form id="delete-account" action="delete-account.php" class="col-12 col-xl-11" method="POST">
                                                 <div class="wrapper-user-data row feedback">
-                                                    <div class="name-user-data col-4"></div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4"></div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
                                                             <div class="invalid-feedback<?php if(isset($_SESSION['de_delete'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_delete'])){echo $_SESSION['de_delete'];}else if(isset($_SESSION['d_error'])){echo $_SESSION['d_error'];}?></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Login lub e-mail</div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Login lub e-mail</div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
                                                             <input class="form-control <?php if(isset($_SESSION['de_delete'])) echo ' is-invalid'?>" type="text" name="d_login" placeholder="Login lub e-mail" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-4">Hasło</div>
-                                                    <div class="box-user-data col-8">
+                                                    <div class="name-user-data col-12 col-sm-4">Hasło</div>
+                                                    <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
                                                             <input class="form-control <?php if(isset($_SESSION['de_delete'])) echo ' is-invalid'?>" type="password" name="d_pass" placeholder="Hasło"/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row justify-content-end">
-                                                    <button type="submit" class="btn btn-primary col-3">Usuń konto</button>
+                                                    <button type="submit" class="btn btn-primary col-12 col-sm-4 col-3">Usuń konto</button>
                                                 </div>
                                             </form>
                                         </div>

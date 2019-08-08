@@ -1,12 +1,44 @@
+@media (max-width: 1450px) {
+    .system-account-wrapper {
+        padding: 50px 15px 30px 15px !important; 
+    }
+
+    #account-info-user {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .system-account-wrapper {
+        padding: 50px 0px 30px 0px !important; 
+    }
+
+    #system-account-home {
+        padding: 35px !important;
+    }
+
+    #system-account-info {
+        padding-left: 35px !important;
+    }
+}
+
 @media (max-width: 991px) {
+    #system-account-container {
+        max-width: inherit;
+    }
+
+    #system-account-menu {
+        min-width: auto !important;
+    }
+
     #system-login-wrapper {
         padding: 0px !important;
         max-width: 90% !important;
     }
 
-    .row {
+    #system-login-wrapper .row {
         padding: 0px !important;
-         max-width: 100% !important;
+        max-width: 100% !important;
     }
 
     #login-form, #register-form, #delete-account-wrapper, #change-pass-account-wrapper {
@@ -17,14 +49,28 @@
         font-size: 25px;
     }
 
-    .system-account-options {
-        width: 100%;
-        border-left: 1px solid #222;
-        border-bottom: 1px solid #222;
+    .system-account-options span, .wrapp-input-search, #account-info-user {
+        display: none !important;
     }
 
-    .system-account-options:first-child {
-        border-left: 0px !important;
+    .system-account-options i {
+        font-size: 24px;
+    }
+
+    #panel-user span {
+        display: none !important;
+    }
+
+    .system-account-options i {
+        margin-right: 0px !important;
+    }
+
+    .system-account-options a {
+        justify-content: center !important;
+    }
+
+    #passowrd-confirm {
+        max-width: fit-content;
     }
 }
 
@@ -32,14 +78,25 @@
     #system-login-wrapper {
         max-width: 95% !important;
     }
+    .system-account-options-focus:before {
+        width: 7px !important;
+    }
+    
+    #system-account-info, #panel-user {
+        height: 55px !important;
+    }
+    
+    #system-account-home {
+        padding: 25px !important;
+    }
 
-    .grecaptcha-badge {
-        box-shadow: grey 0px 0px 3px !important;
+    #user-data {
+        padding: 10px 35px !important;
     }
 }
 
 @media (max-width: 768px) {
-    #system-login-wrapper, #account-wrapper {
+    #system-login-wrapper {
         max-width: 540px !important;
     }
 
@@ -77,21 +134,45 @@
         transform: none !important;
     }
 
-    .system-account-options span {
-        display: none !important;
+    #account-wrapper .row {
+        flex-direction: column;
     }
 
-    .system-account-options i {
-        font-size: 24px;
+    .wrapper-user-data.row {
+        flex-direction: row !important;
     }
 
-    #delete-account, #change-account {
-        width: 94%;
+    .system-account-options-user, #panel-user, #system-account-info {
+        display: none;
+    }
+
+    #system-account-navbar {
+        flex-direction: row;
+    }
+
+    #system-account-menu {
+        max-height: fit-content;
+    }
+
+    .system-account-options-focus:before {
+        width: 100% !important;
+        height: 7px;
+        right: 0;
+    }
+
+    .system-account-options, .system-account-options a {
+        max-width: 25%;
+        justify-content: center;
+        display: flex;
+    }
+
+    .system-account-options a {
+        padding: 15px 0px;
     }
 }
 
-@media (max-width: 576px) {
-    #system-login-wrapper, #account-wrapper {
+@media (max-width: 575px) {
+    #system-login-wrapper {
         max-width: 100% !important;
         padding: 0px 15px !important;
     }
@@ -101,20 +182,45 @@
         padding-bottom: 30px !important;
     }
 
-    #account-wrapper {
-        padding: 0px !important;
-    }
-
     #login-wrapper, #register-wrapper, #delete-account-wrapper, #change-pass-account-wrapper {
         width: 90% !important;
     }
 
     .system-account-wrapper {
+        padding: 40px 0px 0px 0px !important;
+    }
+
+    #system-account-home {
         padding: 0px !important;
     }
 
     #system-account-container {
         min-height: 100vh;
+    }
+
+    .wrapper-user-data.row {
+        flex-direction: column !important;
+        padding: 5px 0px !important;
+    }
+
+    .wrapper-user-data.row .name-user-data, .user-data-header {
+        padding: 5px 0px !important;
+    }
+
+    .box-user-data {
+        padding: 0px !important;
+    }
+
+    #user-data {
+        padding: 10px 45px !important;
+    }
+
+    .cnt-user-data {
+        padding: 0px 0px 50px 0px !important;
+    }
+
+    .cnt-user-data:last-child {
+        padding-bottom: 30px !important;
     }
 }
 
@@ -139,6 +245,12 @@
     }
 }
 
+@media (max-width: 420px) {
+    #user-data {
+        padding: 10px 30px !important;
+    }
+}
+
 @media (max-width: 375px) {
 
     #login-wrapper, #register-wrapper {
@@ -151,7 +263,7 @@
         padding-left: 10px;
     }
 
-    #system-login-wrapper, #account-wrapper {
+    #system-login-wrapper {
         padding: 0px 10px !important;
     }
 
@@ -160,9 +272,10 @@
         padding-bottom: 30px !important;
     }
 
-    #account-wrapper {
-        padding: 0px !important;
+    #user-data {
+        padding: 10px 20px !important;
     }
+
 }
 
 @media (max-width: 350px) {
@@ -175,5 +288,13 @@
     {
         padding-right: 5px;
         padding-left: 5px;
+    }
+
+    #user-data {
+        padding: 10px 15px !important;
+    }
+
+    .system-account-options i {
+        font-size: 21px;
     }
 }
