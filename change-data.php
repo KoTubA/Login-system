@@ -10,7 +10,7 @@
     
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
     if ($conn->connect_errno) {
-        $_SESSION['d_error'] = "Error: ".$conn->connect_errno;
+        $_SESSION['data_error'] = "Error: ".$conn->connect_errno;
     }
     else {
 
@@ -21,7 +21,6 @@
         $number = mysqli_real_escape_string($conn,$_POST['data_number']);
         $pass = mysqli_real_escape_string($conn,$_POST['data_pass']);
         $s_name = mysqli_real_escape_string($conn,$_POST['radio-stacked']);
-        //Chcek s_login and validate data
 
         $id_user = $_SESSION['id_copy'];
         
@@ -105,8 +104,6 @@
                             if(password_verify($pass,$row['password'])) {
                                 $sqlUpdate = "UPDATE `users` SET `login` = '$login', `mail` = '$mail', `name` = '$name', `surname` = '$surname', `number` = '$number', `s_name` = '$s_name' WHERE id='$id_user'";;
                                 if(@$conn->query($sqlUpdate)) {
-                                    if(isset($_SESSION['data_error']))unset($_SESSION['data_error']);
-                                    if(isset($_SESSION['datae_update']))unset($_SESSION['datae_update']);
 
                                     $result->close();
                                     $conn->close();
@@ -120,7 +117,7 @@
                                 }
                             }
                             else {
-                                $_SESSION['datae_update'] = 'Niepoprawne hasło';
+                                $_SESSION['passe_update'] = 'Niepoprawne hasło';
                             }
                         }
                         else {

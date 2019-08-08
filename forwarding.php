@@ -7,7 +7,7 @@
         exit();
     }
     
-    unset($_SESSION['registration']);
+    if(isset($_SESSION['registration']))unset($_SESSION['registration']);
     header('Location: index.php');
     
 ?>

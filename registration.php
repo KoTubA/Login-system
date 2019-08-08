@@ -34,6 +34,13 @@
 </head>
 <body>
     <div id="page-wrapper">
+        <noscript>
+            <div id="no-scirpt">
+                <div id="no-scirpt-cnt">Nasza platforma wymaga JavaScript do niezbędnego funkcjowania! <span>
+                Potrzebujesz pomocy, jak włączyć JavaScript? <a href="https://enable-javascript.com/" target="_blank">Przejdź tutaj.</a></span></div> 
+            </div>
+            <div id="overlay"></div>
+        </noscript>
         <div id="page-cnt-wrapper">
             <main>
                 <div id="system-login-wrapper" class="container">
@@ -72,7 +79,7 @@
 
     </script>
     <?php 
-        unset($_SESSION['registration']);
+        if(isset($_SESSION['registration']))unset($_SESSION['registration']);
     ?>
 </body>
 </html>

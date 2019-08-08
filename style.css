@@ -112,13 +112,24 @@ main {
     visibility: visible !important;
 }
 
-#no-scirpt-cnt {
+#no-scirpt {
     position: fixed;
     z-index: 10001;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#no-scirpt-cnt {
     padding: 20px;
     background-color: #0f0f0f;
     margin-top: 25px;
     border: 5px solid #ff3c41;
+    color: #FFF;
 }
 
 #overlay, .overlay-pass-show {
@@ -198,7 +209,7 @@ main {
 #panel-user {
     width: 100%;
     background-color: #19262e;
-    font-size: 21px;
+    font-size: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -213,6 +224,7 @@ main {
     align-items: center;
     height: 70px;
     padding-left: 50px;
+    font-size: 17px;
     color: #FFF;
     width: 100%;
     background-color: var(--main-color);
@@ -226,7 +238,7 @@ main {
 
 .system-account-options, .system-account-options-user {
     padding: 0px !important;
-    font-size: 17px;
+    font-size: 16px;
     color: #e9e9e9;
     cursor: pointer;
     transition: .3s all;
@@ -235,23 +247,64 @@ main {
 
 .system-account-options-user {
     cursor: default;
-    padding: 20px !important;
+    padding: 15px !important;
     display: flex;
     justify-content: center;
     border-bottom: 1px solid #19262e;
 }
 
+#system-account-navbar .wrapp-input {
+    padding: 5px 15px !important;
+}
+
+#system-account-navbar .wrapp-input input {
+    padding-left: 1rem !important;
+    background-color: #304C5A;
+    border: 1px solid #304C5A;
+    color: #e9e9e9 !important;
+    position: relative;
+    padding-right: 40px !important;
+}
+
+#system-account-navbar .wrapp-input input:focus {
+    box-shadow: none !important;
+}
+
+#system-account-navbar .wrapp-input .icon-input-second {
+    padding-right: 15px !important;
+}
+
+#system-account-navbar .wrapp-input .icon-input-second i {
+    color: #e9e9e9 !important;
+}
+
+#system-account-navbar .wrapp-input input::placeholder {
+    color: #d4d4d4 !important;
+}
+
+/* clears the 'X' from Internet Explorer */
+input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+/* clears the 'X' from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
 #account-info-user {
     flex-direction: column;
-    align-items: center;
-    line-height: 1.3;
+    display: flex;
+    justify-content: center;
+    line-height: 1.4;
     padding: 0px !important;
 }
 
 #account-info-group {
-    font-size: 14px;
+    font-size: 13px;
     color: #a6b9cc;
     text-transform: capitalize;
+    display: flex;
 }
 
 #account-info-login {
@@ -259,12 +312,28 @@ main {
     color: #E4E4DD;
 }
 
+.system-account-options-focus {
+    background-color: #19262e;
+    position: relative;
+}
+
+.system-account-options-focus:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background-color: var(--main-color);
+}
+
 .system-account-options:hover {
     background-color: #19262e;
 }
 
 .system-account-options i {
-    margin-right: 5px;
+    margin-right: 8px;
 }
 
 .system-account-options a {
@@ -273,7 +342,7 @@ main {
     height: 100%;
     display: flex;
     justify-content: flex-start;
-    padding: 20px 30px;
+    padding: 15px 30px;
 }
 
 .system-account-options a:hover {

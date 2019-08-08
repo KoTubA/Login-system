@@ -27,8 +27,6 @@
                         if(password_verify($pass,$row['password'])){
                             $sqlDelete = "DELETE FROM `users` WHERE login='$login' || mail='$login'";
                             if(@$conn->query($sqlDelete)) {
-                                if(isset($_SESSION['d_error']))unset($_SESSION['d_error']);
-                                if(isset($_SESSION['de_logon']))unset($_SESSION['de_logon']);
 
                                 $result->close();
                                 $conn->close();
@@ -42,15 +40,15 @@
                             }
                         }
                         else {
-                            $_SESSION['de_logon'] = 'Błędny login lub hasło';
+                            $_SESSION['de_delete'] = 'Błędny login lub hasło';
                         }
                     }
                     else {
-                        $_SESSION['de_logon'] = 'Błędny login lub hasło';
+                        $_SESSION['de_delete'] = 'Błędny login lub hasło';
                     }
                 }
                 else {
-                    $_SESSION['de_logon'] = 'Błędny login lub hasło';
+                    $_SESSION['de_delete'] = 'Błędny login lub hasło';
                 }
 
                 $result->close();

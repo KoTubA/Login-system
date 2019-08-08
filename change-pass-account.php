@@ -31,17 +31,12 @@
                                 $flag = true;
                                 if (strlen($pass2)<5) {
                                     $flag = false;
-                                    $_SESSION['ec_pass2'] = "Minimalna długość hasła: 5";
+                                    $_SESSION['ep_pass2'] = "Minimalna długość hasła: 5";
                                 }
                                 if($flag) {
                                     if($pass!==$pass2) {
                                         $sqlUpdate = "UPDATE `users` SET `password` = '$pass2_hash' WHERE login='$login' || mail='$login'";
                                         if(@$conn->query($sqlUpdate)) {
-                                            if(isset($_SESSION['p_error']))unset($_SESSION['p_error']);
-                                            if(isset($_SESSION['p_correct']))unset($_SESSION['p_correct']);
-                                            if(isset($_SESSION['pe_logon']))unset($_SESSION['pe_logon']);
-                                            if(isset($_SESSION['ec_pass2']))unset($_SESSION['ec_pass2']);
-                                            if(isset($_SESSION['ec_change']))unset($_SESSION['ec_change']);
 
                                             $result->close();
                                             $conn->close();
@@ -55,21 +50,21 @@
                                         }
                                     }
                                     else {
-                                        $_SESSION['ec_change'] = 'Hasła są identyczne';
-                                        $_SESSION['ec_pass2'] = "Hasła są identyczne";
+                                        $_SESSION['ep_change'] = 'Hasła są identyczne';
+                                        $_SESSION['ep_pass2'] = "Hasła są identyczne";
                                     }
                                 }
                             }
                             else {
-                                $_SESSION['pe_logon'] = 'Błędny login lub hasło';
+                                $_SESSION['ep_logon'] = 'Błędny login lub hasło';
                             }
                         }
                         else {
-                            $_SESSION['pe_logon'] = 'Błędny login lub hasło';
+                            $_SESSION['ep_logon'] = 'Błędny login lub hasło';
                         }
                 }
                 else {
-                    $_SESSION['pe_logon'] = 'Błędny login lub hasło';
+                    $_SESSION['ep_logon'] = 'Błędny login lub hasło';
                 }
 
                 $result->close();
