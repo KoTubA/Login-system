@@ -96,8 +96,12 @@
                         if (strlen($number)!=9) {
                             if($number!="") {
                                 $flag = false;
-                                $_SESSION['edata_number'] = "Wymagana ilość znaków: 9";
+                                $_SESSION['edata_number'] = "Wymagana ilość liter: 9";
                             }
+                        }
+                        else if(!preg_match("/^[0-9]+$/",$number)) {
+                            $flag = false;
+                            $_SESSION['edata_number'] = "Podaj poprawny numer";
                         }
 
                         if($flag) {
