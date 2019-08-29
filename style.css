@@ -117,10 +117,11 @@ main {
 #no-scirpt {
     position: fixed;
     z-index: 10001;
-    top: 0;
+    top: 40px;
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 0px 20px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -132,6 +133,7 @@ main {
     margin-top: 25px;
     border: 5px solid #ff3c41;
     color: #FFF;
+    max-width: 600px;
 }
 
 #overlay, .overlay-pass-show {
