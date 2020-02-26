@@ -66,10 +66,14 @@
     }
 
     .system-account-options a {
-        justify-content: center !important;
+        -webkit-box-pack: center !important;
+            -ms-flex-pack: center !important;
+                justify-content: center !important;
     }
 
     #passowrd-confirm {
+        max-width: -webkit-fit-content;
+        max-width: -moz-fit-content;
         max-width: fit-content;
     }
 
@@ -114,7 +118,10 @@
     }
 
     #system-login-container {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         height: auto !important;
     }
 
@@ -135,6 +142,8 @@
     } 
 
     #toggle-nav {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
         display: flex !important;
         padding: 0px !important;
     }
@@ -144,15 +153,23 @@
     }
 
     .move-el {
-        transform: none !important;
+        -webkit-transform: none !important;
+            -ms-transform: none !important;
+                transform: none !important;
     }
 
     #account-wrapper .row {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
 
     .wrapper-user-data.row {
-        flex-direction: row !important;
+        -webkit-box-orient: horizontal !important;
+        -webkit-box-direction: normal !important;
+            -ms-flex-direction: row !important;
+                flex-direction: row !important;
     }
 
     .system-account-options-user, #panel-user, #system-account-info {
@@ -160,10 +177,15 @@
     }
 
     #system-account-navbar {
-        flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
     }
 
     #system-account-menu {
+        max-height: -webkit-fit-content;
+        max-height: -moz-fit-content;
         max-height: fit-content;
     }
 
@@ -175,7 +197,11 @@
 
     .system-account-options, .system-account-options a {
         max-width: 25%;
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
 
@@ -212,7 +238,10 @@
     }
 
     .wrapper-user-data.row {
-        flex-direction: column !important;
+        -webkit-box-orient: vertical !important;
+        -webkit-box-direction: normal !important;
+            -ms-flex-direction: column !important;
+                flex-direction: column !important;
         padding: 5px 0px !important;
     }
 
