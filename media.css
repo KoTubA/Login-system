@@ -72,6 +72,19 @@
     #passowrd-confirm {
         max-width: fit-content;
     }
+
+    #message h3 {
+        font-size: 12rem;
+    }
+
+    #message p {
+        font-size: 12px;
+    }
+
+    #message .btn-primary {
+        font-size: 10px;
+        min-width: 225px;
+    }
 }
 
 @media (max-width: 850px) {
@@ -222,6 +235,19 @@
     .cnt-user-data:last-child {
         padding-bottom: 30px !important;
     }
+
+    #message h3 {
+        font-size: 10rem;
+    }
+
+    #message p {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    #message .btn-primary {
+        min-width: 220px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -278,6 +304,18 @@
     
     #no-scirpt {
         padding: 0px 10px !important;
+    }
+
+    #message h3 {
+        font-size: 9rem;
+    }
+
+    #message p {
+        letter-spacing: 0.4rem;
+    }
+
+    #message .btn-primary {
+        min-width: 210px;
     }
 
 }
