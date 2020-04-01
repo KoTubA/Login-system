@@ -1,5 +1,8 @@
 :root {
     --main-color: #157ccf;
+    --silver-color: #898989;
+    --error-color: #dc3545;
+    --text-color: #333;
 }
 
 body {
@@ -9,6 +12,7 @@ body {
     background-position: center;
     background-size: cover;
     min-height: 100vh;
+    color: var(--text-color);
 }
 
 #page-wrapper {
@@ -227,7 +231,7 @@ main {
 
 #system-login-container, #system-account-container, #system-registration {
     width: 100%;
-    height: 500px;
+    height: 570px;
     -webkit-box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.4);
             box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.4);
     display: -webkit-box;
@@ -927,8 +931,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     right: 0;
     left: 0;
     bottom: 0;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(21,124,207,1)), to(rgb(17, 79, 172)));
     background: -o-linear-gradient(top, rgba(21,124,207,1) 0%, rgb(17, 79, 172) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(21,124,207,1)), to(rgb(17, 79, 172)));
     background: linear-gradient(180deg, rgba(21,124,207,1) 0%, rgb(17, 79, 172) 100%);
 }
 
@@ -957,7 +961,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 #login-wrapper h5, #register-wrapper h5, .system-account-wrapper h5 {
-    color: #333;
+    color: var(--text-color);
 }
 
 h5 {
@@ -1020,13 +1024,26 @@ input[type=checkbox] {
     margin-left: 0.12rem;
 }
 
-#reminder {
-    margin-top: 10px;
+#reminder, #privacy-policy-agreement {
+    margin-top: 0px;
     text-align: center;
 }
 
 #reminder a {
     font-size: 0.95rem;
+}
+
+#privacy-policy-agreement {
+    font-size: 0.90rem;
+    margin-top: 15px;
+}
+
+#privacy-policy-agreement p {
+    margin: 0px !important;
+}
+
+#privacy-policy-agreement p span {
+    font-weight: 700;
 }
 
 label {
@@ -1041,7 +1058,7 @@ label {
         -ms-flex-align: center;
             align-items: center;
     margin-bottom: 0px;
-    color: #333;
+    color: var(--text-color);
 }
 
 button[type=submit], .change-data-btn {
@@ -1068,7 +1085,7 @@ button {
 
 .custom-control {
     padding: 0px;
-    margin: 5px 0px 10px 48px;
+    margin: 5px 0px 5px 48px;
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1084,6 +1101,10 @@ button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -1093,11 +1114,28 @@ button {
     margin: 8px 0px;
 }
 
+.label-input-form {
+    position: relative;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
 .icon-input, .icon-input-second {
     position: absolute;
     left: 0;
     padding-left: 10px;
-    height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1108,7 +1146,7 @@ button {
 }
 
 .icon-input i, .icon-input-second i {
-    color: #898989;
+    color: var(--silver-color);
 }
 
 .icon-input-second:hover i {
@@ -1137,8 +1175,36 @@ button {
     font-size: 0.8rem;
 }
 
-.form-control:focus+.icon-input i{
+.form-control:focus~.icon-input i{
     color: var(--main-color);
+}
+
+.form-control + label {
+    position: absolute;
+    cursor: default;
+    background-color: #FFF;
+    pointer-events: none;
+    padding: 0px 3px;
+    left: 35px !important;
+    color: var(--silver-color);
+    -webkit-transition: all .15s ease-in-out;
+    -o-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+}
+
+.form-control:focus + label {
+    -webkit-transform: translateY(-25px);
+        -ms-transform: translateY(-25px);
+            transform: translateY(-25px);
+    color: var(--main-color);
+    font-size: 0.9rem;
+}
+
+.form-control.hasvalue + label {
+    -webkit-transform: translateY(-25px) !important;
+        -ms-transform: translateY(-25px) !important;
+            transform: translateY(-25px) !important;
+    font-size: 0.9rem;
 }
 
 .grecaptcha-badge {
@@ -1156,75 +1222,130 @@ button {
 
 .form-control.is-invalid, .was-validated .form-control:invalid {
     background-image: none;
+    border-color: var(--error-color) !important;
 }
 
 .error-message {
-    position: absolute;
-    right: 5px;
-    display: inline-block;
+    display: none;
     font-size: 13px;
     line-height: 1.4;
-    visibility: hidden;
     z-index: 1;
-    color: rgb(46, 46, 46);
-    position: absolute;
-    right: 10px;
-    top: 33px;
-    background-color: #f1f0f0;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    cursor: default;
     opacity: 0;
-    -webkit-transform: translateY(-4px);
-        -ms-transform: translateY(-4px);
-            transform: translateY(-4px);
-    margin: 10px 0px 3px;
-    padding: 8px 15px 7px;
-    -webkit-transition: all 0.2s ease-in 0s;
-    -o-transition: all 0.2s ease-in 0s;
-    transition: all 0.2s ease-in 0s;
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
-            box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+    visibility: hidden;
+    color: var(--error-color);
+    margin-top: 3px;
+    width: 100%;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.error-message::after {
-    content: "";
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    top: -6px;
-    right: 5px;
-    border-bottom: 6px solid #f1f0f0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    z-index: 10;
+#login-via-social-media {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    margin-top: 5px;
 }
 
-.error-message:before {
+.label-login {
+    color: var(--silver-color);
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 7px 0px !important;
+    position: relative;
+    height: 15px;
+}
+
+.label-login::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    background-color: #ff0b22;
+    width: 100%;
+    border-radius: 5px;
+    top: 70%;
+    height: 1px;
+    background-color: var(--silver-color);
+    font-size: 0.95rem;
 }
 
-.alert-validate:hover .error-message {
+#social-media-alternative {
+    margin: 0px !important;
+    position: absolute;
+    background-color: #FFF;
+    width: 15%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.facebook-btn {
+    background-color: #3975F9 !important;
+}
+
+.google-btn {
+    background-color: #FFF!important;
+    color: var(--silver-color) !important;
+    border: 1px solid var(--silver-color) !important;
+}
+
+.facebook-btn, .google-btn {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    width: 100%;
+    margin-top: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.facebook-btn svg, .google-btn svg {
+    margin-right: 8px;
+}
+
+.facebook-btn p, .google-btn p {
+    margin: 0px !important;
+}
+
+.error-alert {
+    margin: 5px 0px !important;
+}
+
+.error-alert .error-message {
     opacity: 1;
     visibility: visible;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }
 
 .alert-validate::before {
     position: absolute;
     content: '\e804';
-    color: #dc3545;
+    color: var(--error-color);
     margin-right: 10px;
     font-family: "fontello";
     font-style: normal;
@@ -1240,6 +1361,7 @@ button {
     margin-left: .7em;
     z-index: 2;
     right: 0;
+    top: 14px;
 }
 
 .invalid-feedback {
@@ -1258,7 +1380,7 @@ button {
 
 .invalid-feedback:first-child {
     margin-top: -10px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -1284,11 +1406,11 @@ button {
     top: 50px;
     padding: 20px;
     background-color: #FFF;
-    color: #dc3545;
+    color: var(--error-color);
     z-index: 10001;
     padding: 20px 30px;
     margin-top: 25px;
-    border: 5px solid #dc3545;
+    border: 5px solid var(--error-color);
 }
 
 #message {

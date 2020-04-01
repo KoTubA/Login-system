@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     $('.form-control').on('focus', function() {
         $(this).removeClass('is-invalid');
-        $(this).parent().removeClass('alert-validate');
+        $(this).parent().parent().removeClass('alert-validate');
     })
 
     $('#toggle-nav-items-login').on('click',function(){
@@ -36,4 +36,16 @@ $(document).ready(function(){
         $('#toggle-login-form').addClass("hidden-el");
         $('#login-wrapper').addClass("hidden-el");
     });
+
+    $(document).on("change", function(event) {
+        let element = event.target;
+        if (element && element.matches(".form-control")) {
+            element.classList[element.value ? "add" : "remove"]("hasvalue");
+        }
+    });
+
+    $('.form-control').each(function() {
+        if($(this).val()) $(this).addClass("hasvalue").delay();
+    });
+
 });

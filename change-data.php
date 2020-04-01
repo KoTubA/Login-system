@@ -39,11 +39,11 @@
                         //Login
                         if (strlen($login)<5) {
                             $flag = false;
-                            $_SESSION['edata_login'] = "Minimalna długość: 5";
+                            $_SESSION['edata_login'] = "Minimalna długość to 5 znaków";
                         }
                         else if (strlen($login)>16) {
                             $flag = false;
-                            $_SESSION['edata_login'] = "Maksymalna długość: 16";
+                            $_SESSION['edata_login'] = "Maksymalna długość to 16 znaków";
                         }
                         else if(!preg_match("/^[a-zA-Z0-9]+$/",$login)) {
                             $flag = false;
@@ -96,12 +96,12 @@
                         if (strlen($number)!=9) {
                             if($number!="") {
                                 $flag = false;
-                                $_SESSION['edata_number'] = "Wymagana ilość liter: 9";
+                                $_SESSION['edata_number'] = "Numer powinien składać się z 9 cyfr";
                             }
                         }
                         else if(!preg_match("/^[0-9]+$/",$number)) {
                             $flag = false;
-                            $_SESSION['edata_number'] = "Podaj poprawny numer";
+                            $_SESSION['edata_number'] = "Podany numer jest nieprawidłowy";
                         }
 
                         if($flag) {
@@ -121,7 +121,7 @@
                                 }
                             }
                             else {
-                                $_SESSION['passe_update'] = 'Niepoprawne hasło';
+                                $_SESSION['passe_update'] = 'Podane hasło nie zgadza się z obecnym';
                             }
                         }
                         else {
