@@ -36,6 +36,7 @@ The database already contains a sample `Administrator` account for testing thing
 
 username: admin
 password: admin
+
 ```
 
 ## Components
@@ -67,11 +68,11 @@ The file `connect.php` allows you to change the configuration of the connection 
 ```php
 // connect.php
 
-    $host = "localhost";
-    $db_user = "root";
-    $db_password = "";
-    $db_name = "loginsystem";
-    
+$host = "localhost";
+$db_user = "root";
+$db_password = "";
+$db_name = "loginsystem";
+ 
 ```
 
 ### ReCAPTCHA
@@ -85,8 +86,8 @@ The application uses the free Google reCAPTCHA service, which helps you detect a
 ```php
 // ReCAPTCHA.php
 
-    define('SITE_KEY', 'my_site_key');
-    define('SECRET_KEY', 'my_secret_key');
+define('SITE_KEY', 'my_site_key');
+define('SECRET_KEY', 'my_secret_key');
         
 ```
 
