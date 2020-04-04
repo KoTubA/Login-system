@@ -545,6 +545,68 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     margin-left: 2px;
 }
 
+#system-registration-connect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    line-height: 21px;
+}
+
+#system-registration-connect p span, #account-data-existing #account-data-existing-name {
+    font-weight: 700;
+}
+
+#account-data {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#account-data-created #account-photo-min {
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+#account-data #plus-account {
+    margin: 0px 20px;
+}
+
+#account-data-existing-email, #account-description-info {
+    color: #767676;
+}
+
+#account-data-existing-email, #account-description-info {
+    font-size: 0.9rem;
+}
+
+#account-data-existing {
+    display: flex;
+    flex-direction: column;
+}
+
+#account-data-choose-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#system-registration-connect h2 {
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+#account-data-choose-resigns a {
+    padding: 5px 10px;
+    letter-spacing: 2px;
+}
+
+#system-registration-connect p, #account-data {
+    margin-bottom: 24px;
+}
+
 #account-photo {
     width: 120px;
     height: 120px;
@@ -763,8 +825,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
         -ms-flex-align: center;
             align-items: center;
 }
-
-/* BY jczimm */
 
 .loader {
     position: relative;
@@ -1294,6 +1354,23 @@ button {
             justify-content: center;
 }
 
+.google-login, .facebook-login {
+    width: 100%;
+}
+
+.google-login:hover, .facebook-login:hover, .accept-connect {
+    text-decoration: none;
+}
+
+.accept-connect {
+    width: auto;
+    height: auto;
+}
+
+.btn.accept-connect p {
+    margin: 0px !important;
+}
+
 .facebook-btn {
     background-color: #3975F9 !important;
 }
@@ -1320,6 +1397,10 @@ button {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+}
+
+.facebook-btn a, .google-btn a {
+    width: 100%;
 }
 
 .facebook-btn svg, .google-btn svg {

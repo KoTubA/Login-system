@@ -35,7 +35,6 @@
                         if(isset($_SESSION['e_logon']))unset($_SESSION['e_logon']);
                         if(isset($_SESSION['l_error']))unset($_SESSION['l_error']);
                         if(isset($_SESSION['fl_login']))unset($_SESSION['fl_login']);
-                        if(isset($_SESSION['fl_pass']))unset($_SESSION['fl_pass']);
                         if(isset($_SESSION['fl_remember-me']))unset($_SESSION['fl_remember-me']);
                         
                         $result->close();
@@ -53,7 +52,6 @@
                 }
                 
                 $_SESSION['fl_login'] = $login;
-                $_SESSION['fl_pass'] = $pass;
                 if(!empty($_POST['remember-me'])) $_SESSION['fl_remember-me'] = 'checked';
 
                 $result->close();

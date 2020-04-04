@@ -10,6 +10,15 @@
     if(isset($_SESSION['surname_copy']))unset($_SESSION['surname_copy']);
     if(isset($_SESSION['number_copy']))unset($_SESSION['number_copy']);
     if(isset($_SESSION['s_name_copy']))unset($_SESSION['s_name_copy']);
+
+    //Logout Google Account
+    if(isset($_SESSION['g_access_token'])) {
+        require_once "config.php";
+        unset($_SESSION['g_access_token']);
+        $gClient->revokeToken();
+    }
     
+    session_destroy();
     header('Location: index.php');
+    exit();
 ?>

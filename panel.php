@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['online'])) {
+    if((!isset($_SESSION['online'])&&(!isset($_SESSION['g_access_token'])))) {
         header('Location: index.php');
         exit();
     }
@@ -28,6 +28,7 @@
                     $_SESSION['surname_copy'] = $row['surname'];
                     $_SESSION['number_copy'] = $row['number'];
                     $_SESSION['s_name_copy'] = $row['s_name'];
+                    $_SESSION['picture_copy'] = $row['picture'];
 
                 }
                 else {
@@ -87,10 +88,18 @@
                             <div id="system-account-navbar">
                                 <div class="system-account-options-user">
                                     <div id="account-photo-min" class="col-3">
-                                        <img src="img/defult-account.jpg" alt="defult-photo">
+                                        <?php 
+                                            if($_SESSION['picture_copy']!=""){echo '<img src="'.$_SESSION['picture_copy'].'" alt="defult-photo"/>';}
+                                            else {echo '<img src="img/defult-account.jpg" alt="defult-photo"/>';};?>
                                     </div>
                                     <div id="account-info-user" class="col-9">
-                                        <div id="account-info-login"><?php if($_SESSION['s_name_copy']=="login"){echo $_SESSION['login_copy'];}else {if(($_SESSION['name_copy']=='')&&($_SESSION['surname_copy']=='')){echo 'User '.$id_user;}else{echo $_SESSION['name_copy'].' '.$_SESSION['surname_copy'];}}?></div>
+                                        <div id="account-info-login">
+                                            <?php 
+                                                if($_SESSION['s_name_copy']=="login"){
+                                                    echo $_SESSION['login_copy'];}
+                                                else {if(($_SESSION['name_copy']=='')&&($_SESSION['surname_copy']=='')){
+                                                    echo 'User '.$id_user;}else{echo $_SESSION['name_copy'].' '.$_SESSION['surname_copy'];}}?>
+                                        </div>
                                         <div id="account-info-group"><?php echo $_SESSION['type_copy']?></div>
                                     </div>
                                 </div>
@@ -105,13 +114,27 @@
                             </div>
                         </div>
                         <div id="system-account-container" class="col-12 col-md-11 col-lg-10">
-                            <div id="system-account-info"><i class="icon-user"></i> Użytkownik: <?php if($_SESSION['s_name_copy']=="login"){echo $_SESSION['login_copy'];}else {if(($_SESSION['name_copy']=='')&&($_SESSION['surname_copy']=='')){echo 'User '.$id_user;}else{echo $_SESSION['name_copy'].' '.$_SESSION['surname_copy'];}}?></div>
+                            <div id="system-account-info"><i class="icon-user"></i> Użytkownik: 
+                                <?php 
+                                    if($_SESSION['s_name_copy']=="login"){echo $_SESSION['login_copy'];}
+                                    else {if(($_SESSION['name_copy']=='')&&($_SESSION['surname_copy']=='')){echo 'User '.$id_user;}else{echo $_SESSION['name_copy'].' '.$_SESSION['surname_copy'];}}?>
+                            </div>
                             <div id="system-account-home" class="system-account-items col-12">
                                 <div class="system-account-wrapper col-12">
-                                    <div class="invalid-feedback mb-4<?php if(isset($_SESSION['panel_error'])) echo ' invalid-visible';?>"><?php if(isset($_SESSION['panel_error'])) echo $_SESSION['panel_error'];?></div>
-                                    <div id="account-photo"><img src="img/defult-account.jpg" alt="defult-photo"/></div>
+                                    <div class="invalid-feedback mb-4
+                                        <?php if(isset($_SESSION['panel_error'])) echo ' invalid-visible';?>"><?php if(isset($_SESSION['panel_error'])) echo $_SESSION['panel_error'];?>
+                                    </div>
+                                    <div id="account-photo">
+                                       <?php 
+                                            if($_SESSION['picture_copy']!=""){echo '<img src="'.$_SESSION['picture_copy'].'" alt="defult-photo"/>';}
+                                            else {echo '<img src="img/defult-account.jpg" alt="defult-photo"/>';};?>
+                                    </div>
                                     <div id="account-info">
-                                        <h4 id="user-name"><?php if($_SESSION['s_name_copy']=="login"){echo $_SESSION['login_copy'];}else {if(($_SESSION['name_copy']=='')&&($_SESSION['surname_copy']=='')){echo 'User '.$id_user;}else{echo $_SESSION['name_copy'].' '.$_SESSION['surname_copy'];}}?></h4>
+                                        <h4 id="user-name">
+                                            <?php 
+                                                if($_SESSION['s_name_copy']=="login"){echo $_SESSION['login_copy'];}
+                                                else {if(($_SESSION['name_copy']=='')&&($_SESSION['surname_copy']=='')){echo 'User '.$id_user;}else{echo $_SESSION['name_copy'].' '.$_SESSION['surname_copy'];}}?>
+                                        </h4>
                                         <h3 id="user-group"><?php echo $_SESSION['type_copy']?></h3>
                                     </div>
                                     <div id="user-data">
@@ -122,7 +145,16 @@
                                                     <div class="name-user-data col-12 col-sm-4"></div>
                                                     <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
-                                                            <div class="invalid-feedback<?php if(isset($_SESSION['datae_update'])||isset($_SESSION['data_error'])||isset($_SESSION['passe_update'])){echo ' invalid-visible';}else if (isset($_SESSION['data_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['datae_update'])){echo $_SESSION['datae_update'];}else if(isset($_SESSION['passe_update'])){echo $_SESSION['passe_update'];}else if(isset($_SESSION['data_error'])){echo $_SESSION['data_error'];}else if (isset($_SESSION['data_correct'])){echo $_SESSION['data_correct'];}?></div>
+                                                            <div class="invalid-feedback
+                                                            <?php 
+                                                                if(isset($_SESSION['datae_update'])||isset($_SESSION['data_error'])||isset($_SESSION['passe_update'])){echo ' invalid-visible';}
+                                                                else if (isset($_SESSION['data_correct'])){echo ' invalid-visible correct';}?>">
+                                                            <?php
+                                                                if(isset($_SESSION['datae_update'])){echo $_SESSION['datae_update'];}
+                                                                else if(isset($_SESSION['passe_update'])){echo $_SESSION['passe_update'];}
+                                                                else if(isset($_SESSION['data_error'])){echo $_SESSION['data_error'];}
+                                                                else if (isset($_SESSION['data_correct'])){echo $_SESSION['data_correct'];}?>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,7 +184,10 @@
                                                     <div class="name-user-data col-12 col-sm-4">Imie<p>(opcjonalnie)</p></div>
                                                     <div class="box-user-data col-12 col-sm-8">
                                                         <div class="label-input-form">
-                                                            <input class="form-control" type="text" name="data_name" spellcheck="false" <?php if(isset($_SESSION['dataf_name'])){echo "value='".$_SESSION['dataf_name']."'";} else if(isset($_SESSION['name_copy'])){echo "value='".$_SESSION['name_copy']."'";}?>/>
+                                                            <input class="form-control" type="text" name="data_name" spellcheck="false" 
+                                                            <?php 
+                                                                if(isset($_SESSION['dataf_name'])){echo "value='".$_SESSION['dataf_name']."'";} 
+                                                                else if(isset($_SESSION['name_copy'])){echo "value='".$_SESSION['name_copy']."'";}?>/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,7 +195,10 @@
                                                     <div class="name-user-data col-12 col-sm-4">Nazwisko<p>(opcjonalnie)</p></div>
                                                     <div class="box-user-data col-12 col-sm-8">
                                                         <div class="label-input-form">
-                                                            <input class="form-control" type="text" name="data_surname" spellcheck="false" <?php if(isset($_SESSION['dataf_surname'])){echo "value='".$_SESSION['dataf_surname']."'";} else if(isset($_SESSION['surname_copy'])){echo "value='".$_SESSION['surname_copy']."'";}?>/>
+                                                            <input class="form-control" type="text" name="data_surname" spellcheck="false" 
+                                                            <?php 
+                                                                if(isset($_SESSION['dataf_surname'])){echo "value='".$_SESSION['dataf_surname']."'";} 
+                                                                else if(isset($_SESSION['surname_copy'])){echo "value='".$_SESSION['surname_copy']."'";}?>/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,11 +217,17 @@
                                                     <div class="name-user-data col-12 col-sm-4">Nazwa użytkownika</div>
                                                     <div class="box-user-data col-12 col-sm-8">
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked" value="login" required <?php if(isset($_SESSION['dataf_s_name'])){if($_SESSION['dataf_s_name']=="login") echo 'checked';} else if(isset($_SESSION['s_name_copy'])){if($_SESSION['s_name_copy']=="login") echo 'checked';}?>>
+                                                            <input type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked" value="login" required 
+                                                                <?php 
+                                                                    if(isset($_SESSION['dataf_s_name'])){if($_SESSION['dataf_s_name']=="login") echo 'checked';} 
+                                                                    else if(isset($_SESSION['s_name_copy'])){if($_SESSION['s_name_copy']=="login") echo 'checked';}?>>
                                                             <label class="custom-control-label" for="customControlValidation1">Login</label>
                                                         </div>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" value="n&sn" required <?php if(isset($_SESSION['dataf_s_name'])){if($_SESSION['dataf_s_name']=="n&sn") echo 'checked';} else if(isset($_SESSION['s_name_copy'])){if($_SESSION['s_name_copy']=="n&sn") echo 'checked';}?>>
+                                                            <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" value="name" required 
+                                                            <?php 
+                                                                if(isset($_SESSION['dataf_s_name'])){if($_SESSION['dataf_s_name']=="name") echo 'checked';} 
+                                                                else if(isset($_SESSION['s_name_copy'])){if($_SESSION['s_name_copy']=="name") echo 'checked';}?>>
                                                             <label class="custom-control-label" for="customControlValidation2">Imie i nazwisko</label>
                                                         </div>
                                                     </div>
@@ -214,7 +258,16 @@
                                                     <div class="name-user-data col-12 col-sm-4"></div>
                                                     <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
-                                                            <div class="invalid-feedback<?php if(isset($_SESSION['ep_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ep_change'])||isset($_SESSION['ep_pass2'])){echo ' invalid-visible';}else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['ep_logon'])){echo $_SESSION['ep_logon'];}else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}else if(isset($_SESSION['ep_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}else if (isset($_SESSION['ep_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?></div>
+                                                            <div class="invalid-feedback
+                                                            <?php 
+                                                                if(isset($_SESSION['ep_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ep_change'])||isset($_SESSION['ep_pass2'])){echo ' invalid-visible';}
+                                                                else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>">
+                                                            <?php 
+                                                                if(isset($_SESSION['ep_logon'])){echo $_SESSION['ep_logon'];}
+                                                                else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}
+                                                                else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}
+                                                                else if(isset($_SESSION['ep_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}
+                                                                else if (isset($_SESSION['ep_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -262,7 +315,12 @@
                                                     <div class="name-user-data col-12 col-sm-4"></div>
                                                     <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
-                                                            <div class="invalid-feedback<?php if(isset($_SESSION['de_delete'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['de_delete'])){echo $_SESSION['de_delete'];}else if(isset($_SESSION['d_error'])){echo $_SESSION['d_error'];}?></div>
+                                                            <div class="invalid-feedback
+                                                            <?php 
+                                                                if(isset($_SESSION['de_delete'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>">
+                                                            <?php 
+                                                                if(isset($_SESSION['de_delete'])){echo $_SESSION['de_delete'];}
+                                                                else if(isset($_SESSION['d_error'])){echo $_SESSION['d_error'];}?></div>
                                                         </div>
                                                     </div>
                                                 </div>
