@@ -15,14 +15,13 @@
 	$oAuth = new Google_Service_Oauth2($gClient);
 	$userData = $oAuth->userinfo_v2_me->get();
 
-    $_SESSION['login'] = $userData['given_name']." ".$userData['family_name'];
-    $_SESSION['mail'] = $userData['email'];
-    $_SESSION['name'] = $userData['given_name'];
-    $_SESSION['surname'] = $userData['family_name'];
-    $_SESSION['type'] = "google";
-    $_SESSION['s_name'] = "name";
-    $_SESSION['picture'] = $userData['picture'];
-    $_SESSION['g_alt_id'] = $userData['id'];
+    $_SESSION['g_mail_register'] = $userData['email'];
+    $_SESSION['g_name_register'] = $userData['given_name'];
+    $_SESSION['g_surname_register'] = $userData['family_name'];
+    $_SESSION['g_type_register'] = "google";
+    $_SESSION['g_s_name_register'] = "name";
+    $_SESSION['g_picture_register'] = $userData['picture'];
+    $_SESSION['g_alt_id_register'] = $userData['id'];
 
     header('Location: g-check.php');
 

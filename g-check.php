@@ -7,16 +7,15 @@
     $conn = @new mysqli($host, $db_user, $db_password, $db_name);
     if (!$conn->connect_errno) {
 
-        $login = $_SESSION['login'];
-        $mail = $_SESSION['mail'];
-        $name = $_SESSION['name'];
-        $surname = $_SESSION['surname'];
-        $type = $_SESSION['type'];
-        $s_name = $_SESSION['s_name'];
-        $picture = $_SESSION['picture'];
-        $g_alt_id = $_SESSION['g_alt_id'];
+        $mail = $_SESSION['g_mail_register'];
+        $name = $_SESSION['g_name_register'];
+        $surname = $_SESSION['g_surname_register'];
+        $type = $_SESSION['g_type_register'];
+        $s_name = $_SESSION['g_s_name_register'];
+        $picture = $_SESSION['g_picture_register'];
+        $g_alt_id = $_SESSION['g_alt_id_register'];
         $authorization = true;
-
+    
         $sql = "SELECT * FROM `users` WHERE g_alt_id='$g_alt_id'";
         if($resultAccount = @$conn->query($sql)) {
             $resultAccountCheck = $resultAccount->num_rows;
@@ -25,19 +24,48 @@
                 $sql1 = "SELECT * FROM `users` WHERE mail='$mail'";
                 if($resultMail = @$conn->query($sql1)) {
                     $resultMailCheck = $resultMail->num_rows;
-                        $sql2 = "INSERT INTO `users` (`login`, `mail`, `name`, `surname`, `type`, `s_name`, `picture`, `g_alt_id`) VALUES ('$login', '$mail', '$name', '$surname', '$type', '$s_name', '$picture', '$g_alt_id')";
+                        //Unique id login
+                        do {
+                            $uniqueID = "Client:".uniqid();
+                            $resultUnique = $conn->query("SELECT `login` FROM `users` WHERE login='$uniqueID'");
+                            $exists = $resultUnique->num_rows;
+                        } while ($exists===1);
+                        $_SESSION['g_unique_login_register'] = $uniqueID;
 
-                        if(!$resultData = $conn->query($sql2)) {$authorization = false;}
                         if($resultMailCheck>0){
-                            
-                            if(isset($_SESSION['login']))unset($_SESSION['login']);
-                            if(isset($_SESSION['name']))unset($_SESSION['name']);
-                            if(isset($_SESSION['surname']))unset($_SESSION['surname']);
-                            if(isset($_SESSION['s_name']))unset($_SESSION['s_name']);
+                            $tabuser = [];
+                            while($rowuser = $resultMail->fetch_assoc()) {
+                                array_push($tabuser,$rowuser["type"]);
+                            }
+
+                            if(array_search("user", $tabuser)!==false){
+                                $resultData = $conn->query("SELECT * FROM `users` WHERE mail='$mail' AND type='user'");
+                                $data = $resultData->fetch_assoc();
+                                if(empty($data['name'])||empty($data['surname'])) {
+                                    $_SESSION['name_account_exist'] = $data['login'];
+                                }
+                                else {
+                                    $_SESSION['name_account_exist'] = $data['name']." ".$data['surname'];
+                                }
+                                $_SESSION['mail_account_exist'] = $data['mail'];
+                                $_SESSION['id_account_exist'] = $data['id'];
+                            }
+                            else if(array_search("facebook", $tabuser)!==false){
+                                $resultData = $conn->query("SELECT * FROM `users` WHERE mail='$mail' AND type='facebook'");
+                                $data = $resultData->fetch_assoc();
+                                if(empty($data['name'])||empty($data['surname'])) {
+                                    $_SESSION['name_account_exist'] = $data['login'];
+                                }
+                                else {
+                                    $_SESSION['name_account_exist'] = $data['name']." ".$data['surname'];
+                                }
+                                $_SESSION['mail_account_exist'] = $data['mail'];
+                                $_SESSION['type_account_exist'] = $data['type'];
+                            }
 
                             $conn->close();
+                            $_SESSION['g_registration'] = true;
                             header('Location: connect_account.php');
-                            $_SESSION['registration'] = true;
                             exit();
                         }
                     
@@ -52,14 +80,13 @@
                     $row = $resultLogin->fetch_assoc();
                     $_SESSION['id_copy'] = $row['id'];
 
-                    if(isset($_SESSION['login']))unset($_SESSION['login']);
-                    if(isset($_SESSION['mail']))unset($_SESSION['mail']);
-                    if(isset($_SESSION['name']))unset($_SESSION['name']);
-                    if(isset($_SESSION['surname']))unset($_SESSION['surname']);
-                    if(isset($_SESSION['type']))unset($_SESSION['type']);
-                    if(isset($_SESSION['s_name']))unset($_SESSION['s_name']);
-                    if(isset($_SESSION['picture']))unset($_SESSION['picture']);
-                    if(isset($_SESSION['g_alt_id']))unset($_SESSION['g_alt_id']);
+                    if(isset($_SESSION['g_mail_register']))unset($_SESSION['g_mail_register']);
+                    if(isset($_SESSION['g_name_register']))unset($_SESSION['g_name_register']);
+                    if(isset($_SESSION['g_surname_register']))unset($_SESSION['g_surname_register']);
+                    if(isset($_SESSION['g_type_register']))unset($_SESSION['g_type_register']);
+                    if(isset($_SESSION['g_s_name_register']))unset($_SESSION['g_s_name_register']);
+                    if(isset($_SESSION['g_picture_register']))unset($_SESSION['g_picture_register']);
+                    if(isset($_SESSION['g_alt_id_register']))unset($_SESSION['g_alt_id_register']);
 
                     $_SESSION['online'] = true;
 
@@ -71,14 +98,13 @@
         }
     }
 
-    if(isset($_SESSION['login']))unset($_SESSION['login']);
-    if(isset($_SESSION['mail']))unset($_SESSION['mail']);
-    if(isset($_SESSION['name']))unset($_SESSION['name']);
-    if(isset($_SESSION['surname']))unset($_SESSION['surname']);
-    if(isset($_SESSION['type']))unset($_SESSION['type']);
-    if(isset($_SESSION['s_name']))unset($_SESSION['s_name']);
-    if(isset($_SESSION['picture']))unset($_SESSION['picture']);
-    if(isset($_SESSION['g_alt_id']))unset($_SESSION['g_alt_id']);
+    if(isset($_SESSION['g_mail_register']))unset($_SESSION['g_mail_register']);
+    if(isset($_SESSION['g_name_register']))unset($_SESSION['g_name_register']);
+    if(isset($_SESSION['g_surname_register']))unset($_SESSION['g_surname_register']);
+    if(isset($_SESSION['g_type_register']))unset($_SESSION['g_type_register']);
+    if(isset($_SESSION['g_s_name_register']))unset($_SESSION['g_s_name_register']);
+    if(isset($_SESSION['g_picture_register']))unset($_SESSION['g_picture_register']);
+    if(isset($_SESSION['g_alt_id_register']))unset($_SESSION['g_alt_id_register']);
 
     $_SESSION['l_error'] = 'Error: Błąd zapytania do bazy!';
     unset($_SESSION['g_access_token']);

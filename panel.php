@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if((!isset($_SESSION['online'])&&(!isset($_SESSION['g_access_token'])))) {
+    if(!isset($_SESSION['online'])) {
         header('Location: index.php');
         exit();
     }

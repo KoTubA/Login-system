@@ -1,10 +1,9 @@
 <?php
     session_start();
-    /*
-    if(!isset($_SESSION['registration'])) {
+    if(!isset($_SESSION['g_registration'])) {
         header('Location: index.php');
         exit();
-    }*/
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -47,14 +46,14 @@
                         <div id="system-registration">
                             <div id="system-registration-connect">
                                 <h2>Połącz konta</h2>
-                                <p>Na adres <span><?php echo $_SESSION['mail']?></span> jest już założone konto. Czy chesz połączyć to konto z kontem <?php echo ucfirst($_SESSION['type'])?></p>
+                                <p>Na adres <span><?php echo $_SESSION['g_mail_register']?></span> jest już założone konto <span><?php if(isset($_SESSION['type_account_exist'])){echo $_SESSION['type_account_exist'];}?></span>. Czy chesz połączyć to konto z kontem <?php echo ucfirst($_SESSION['g_type_register'])?></p>
                                 <div id="account-data">
                                     <div id="account-data-existing">
                                         <div id="account-data-existing-name">
-                                            Szymon Kotarba
+                                            <?php echo $_SESSION['name_account_exist']?>
                                         </div>
                                         <div id="account-data-existing-email">
-                                            szymon.kotarba988@gmail.com
+                                            <?php echo $_SESSION['mail_account_exist']?>
                                         </div>
                                     </div>
                                     <div id="plus-account">
@@ -63,7 +62,7 @@
                                     <div id="account-data-created">
                                         <div id="account-photo-min">
                                             <?php 
-                                                if($_SESSION['picture']!=""){echo '<img src="'.$_SESSION['picture'].'" alt="defult-photo"/>';}
+                                                if($_SESSION['g_picture_register']!=""){echo '<img src="'.$_SESSION['g_picture_register'].'" alt="defult-photo"/>';}
                                                 else {echo '<img src="img/defult-account.jpg" alt="defult-photo"/>';};
                                             ?>
                                         </div>
@@ -74,7 +73,7 @@
                                     publicznego oraz adresu e-mail.</p>
                                 <div id="account-data-choose-section">
                                     <div id="account-data-choose-resigns">
-                                        <a href="g_login.php" id="forwarding">ANULUJ</a>
+                                        <a href="g_register.php" id="forwarding">ANULUJ</a>
                                     </div>
                                     <div id="account-data-choose-accept">
                                         <a class="accept-connect" href="account_linking.php">
@@ -96,8 +95,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="visual-effects.js"></script>
-    <?php 
-        if(isset($_SESSION['registration']))unset($_SESSION['registration']);
-    ?>
 </body>
 </html>
