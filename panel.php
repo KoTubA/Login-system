@@ -64,6 +64,13 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,700&display=swap" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="css/fontello.css"/>
+    <script type="text/javascript">
+        if (window.location.hash && window.location.hash == '#_=_') {
+            if (window.history && history.pushState) {
+                window.history.pushState("", document.title, window.location.pathname);
+            }
+        }
+    </script>
     <!--[if lt IE 9]>
         <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
         </script>

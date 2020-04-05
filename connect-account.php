@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['g_registration'])) {
+    if(!isset($_SESSION['registration'])) {
         header('Location: index.php');
         exit();
     }
@@ -29,6 +29,13 @@
         </script>
     <![endif]-->
     <script src="https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>"></script>
+    <script type="text/javascript">
+        if (window.location.hash && window.location.hash == '#_=_') {
+            if (window.history && history.pushState) {
+                window.history.pushState("", document.title, window.location.pathname);
+            }
+        }
+    </script>
 </head>
 <body>
     <div id="page-wrapper">
@@ -46,7 +53,7 @@
                         <div id="system-registration">
                             <div id="system-registration-connect">
                                 <h2>Połącz konta</h2>
-                                <p>Na adres <span><?php echo $_SESSION['g_mail_register']?></span> jest już założone konto <span><?php if(isset($_SESSION['type_account_exist'])){echo $_SESSION['type_account_exist'];}?></span>. Czy chesz połączyć to konto z kontem <?php echo ucfirst($_SESSION['g_type_register'])?></p>
+                                <p>Na adres <span><?php echo $_SESSION['mail_register']?></span> jest już założone konto <span><?php if(isset($_SESSION['type_account_exist'])){echo $_SESSION['type_account_exist'];}?></span>. Czy chesz połączyć to konto z kontem <?php echo ucfirst($_SESSION['type_register'])?></p>
                                 <div id="account-data">
                                     <div id="account-data-existing">
                                         <div id="account-data-existing-name">
@@ -62,7 +69,7 @@
                                     <div id="account-data-created">
                                         <div id="account-photo-min">
                                             <?php 
-                                                if($_SESSION['g_picture_register']!=""){echo '<img src="'.$_SESSION['g_picture_register'].'" alt="defult-photo"/>';}
+                                                if($_SESSION['picture_register']!=""){echo '<img src="'.$_SESSION['picture_register'].'" alt="defult-photo"/>';}
                                                 else {echo '<img src="img/defult-account.jpg" alt="defult-photo"/>';};
                                             ?>
                                         </div>
@@ -73,10 +80,10 @@
                                     publicznego oraz adresu e-mail.</p>
                                 <div id="account-data-choose-section">
                                     <div id="account-data-choose-resigns">
-                                        <a href="g_register.php" id="forwarding">ANULUJ</a>
+                                        <a href="account-register.php" id="forwarding">ANULUJ</a>
                                     </div>
                                     <div id="account-data-choose-accept">
-                                        <a class="accept-connect" href="account_linking.php">
+                                        <a class="accept-connect" href="account-linking.php">
                                             <button class="btn btn-primary accept-connect">
                                                 <p>POŁĄCZ KONTA</p>
                                             </button>

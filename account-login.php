@@ -1,11 +1,11 @@
 <?php
     //Logging in an unconnected account
     session_start();
-    if(!isset($_SESSION['g_registration'])) {
+    if(!isset($_SESSION['registration'])) {
         header('Location: index.php');
         exit();
     }
-    if(isset($_SESSION['g_registration']))unset($_SESSION['g_registration']);
+    if(isset($_SESSION['registration']))unset($_SESSION['registration']);
 
     require_once('connect.php');
 
@@ -14,15 +14,21 @@
         $_SESSION['l_error'] = "Error: ".$conn->connect_errno;
     }
     else {
+        if(isset($_SESSION['g_access_token'])) {
+            $column = "g_alt_id";
+        }
+        else {
+            $column = "f_alt_id";
+        }
         
-        $g_alt_id_register = $_SESSION['g_alt_id_register'];
-        echo $g_alt_id_register;
-        $sql = "SELECT * FROM `users` WHERE g_alt_id='$g_alt_id_register'";
+        $alt_id_register = $_SESSION['alt_id_register'];
+
+        $sql = "SELECT * FROM `users` WHERE $column='$alt_id_register'";
         if($resultLogin = @$conn->query($sql)){
             $row = $resultLogin->fetch_assoc();
             $_SESSION['id_copy'] = $row['id'];
 
-            if(isset($_SESSION['g_alt_id_register']))unset($_SESSION['g_alt_id_register']);
+            if(isset($_SESSION['alt_id_register']))unset($_SESSION['alt_id_register']);
             $_SESSION['online'] = true;
 
             $conn->close();
@@ -34,7 +40,7 @@
         }
     }
 
-    if(isset($_SESSION['g_alt_id_register']))unset($_SESSION['g_alt_id_register']);
+    if(isset($_SESSION['alt_id_register']))unset($_SESSION['alt_id_register']);
     unset($_SESSION['g_access_token']);
     header('Location: index.php');
     exit();
