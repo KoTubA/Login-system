@@ -97,6 +97,6 @@ define('SECRET_KEY', 'my_secret_key');
 1. Create a user account using the registration system.
 2. Open DBMS and then manually for the appropriate user, edit the value of the `type` column in the `users` table from `user` to `admin`.
 
-| id | mail | login | password | name | surname | number | type | s_name | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | admin@gmail.com | admin | *********** |  |  |  | admin | login | 
+| id | mail | login | password | name | surname | number | type | s_name | picture | g_alt_id | f_alt_id | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | admin@gmail.com | admin | ********** |  |  |  | admin | login |  |  |  | 
