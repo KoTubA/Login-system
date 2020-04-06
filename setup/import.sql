@@ -31,15 +31,18 @@ CREATE TABLE `users` (
   `surname` text COLLATE utf8_polish_ci NOT NULL,
   `number` text COLLATE utf8_polish_ci NOT NULL,
   `type` text COLLATE utf8_polish_ci NOT NULL,
-  `s_name` text COLLATE utf8_polish_ci NOT NULL
+  `s_name` text COLLATE utf8_polish_ci NOT NULL,
+  `picture` text COLLATE utf8_polish_ci NOT NULL,
+  `g_alt_id` text COLLATE utf8_polish_ci NOT NULL,
+  `f_alt_id` text COLLATE utf8_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `mail`, `login`, `password`, `name`, `surname`, `number`, `type`, `s_name`) VALUES
-(1, 'admin@gmail.com', 'admin', '$2y$10$9/LD.u5Cxjol2ooHrqOWIu/PxZZ3KLMMWnn2kBaZzqoudrbBnprxO', '', '', '', 'admin', 'login');
+INSERT INTO `users` (`id`, `mail`, `login`, `password`, `name`, `surname`, `number`, `type`, `s_name`, `picture`, `g_alt_id`, `f_alt_id`) VALUES
+(1, 'admin@gmail.com', 'admin', '$2y$10$9/LD.u5Cxjol2ooHrqOWIu/PxZZ3KLMMWnn2kBaZzqoudrbBnprxO', '', '', '', 'admin', 'login', '', '', '');
 
 --
 -- Indexes for dumped tables
