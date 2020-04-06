@@ -6,7 +6,7 @@
 		$gClient->setAccessToken($_SESSION['g_access_token']);
 	else if (isset($_GET['code'])) {
 		$token = $gClient->fetchAccessTokenWithAuthCode($_GET['code']);
-		$_SESSION['g_access_token'] = $token;  //Do poprawy
+		$_SESSION['g_access_token'] = $token;
 	} else {
 		header('Location: index.php');
 		exit();

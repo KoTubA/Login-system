@@ -91,7 +91,7 @@
                 <div id="account-wrapper" class="container-fluid p-0">
                     <div class="row col-12 col-xl-10 p-0 mw-100">
                         <div id="system-account-menu" class="col-12 col-md-1 col-lg-2">
-                            <div id="panel-user"><span><?php echo $_SESSION['type_copy']?> panel</span></div>
+                            <div id="panel-user"><span><?php if($_SESSION['type_copy']=="admin"){echo "ADMIN";}else{echo "USER";}?> panel</span></div>
                             <div id="system-account-navbar">
                                 <div class="system-account-options-user">
                                     <div id="account-photo-min" class="col-3">

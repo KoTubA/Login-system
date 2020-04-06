@@ -31,7 +31,7 @@
     $_SESSION['s_name_register'] = "name";
     $_SESSION['picture_register'] = $userData['picture']['url'];
     $_SESSION['alt_id_register'] = $userData['id'];
-	$_SESSION['f_access_token'] = (string) $accessToken; //do narprawy
+	$_SESSION['f_access_token'] = (string) $accessToken;
 
 	header('Location: account-check.php');
 	exit();

@@ -1,6 +1,11 @@
 <?php
     //Checking your google account in the DT
     session_start();
+    if(!isset($_SESSION['g_access_token'])&&!isset($_SESSION['f_access_token'])) {
+        header('Location: index.php');
+        exit();
+    }
+
     require_once('connect.php');
 
     if(isset($_SESSION['f_access_token'])||isset($_SESSION['g_access_token'])){
@@ -18,12 +23,13 @@
             $authorization = true;
 
             //Check which social media is used to log in
-            if(isset($_SESSION['g_access_token'])) {
+            if($type==="google"){
                 $column = "g_alt_id";
             }
-            else {
+            else if($type==="facebook"){
                 $column = "f_alt_id";
             }
+            
 
             $sql = "SELECT * FROM `users` WHERE $column='$alt_id'";
             if($resultAccount = @$conn->query($sql)) {
@@ -87,13 +93,13 @@
                                 }
 
                                 $conn->close();
-                                $_SESSION['registration'] = true;
+                                $_SESSION['social_registration'] = true;
                                 header('Location: connect-account.php');
                                 exit();
                             }
                             else {
                                 $conn->close();
-                                $_SESSION['registration'] = true;
+                                $_SESSION['social_registration'] = true;
                                 header('Location: account-register.php');
                                 exit();
                             }
@@ -104,27 +110,19 @@
                 }
 
                 if($authorization) {
-                    $sql3 = "SELECT * FROM `users` WHERE $column='$alt_id'";
-                    if($resultLogin = @$conn->query($sql3)){
-                        $row = $resultLogin->fetch_assoc();
-                        $_SESSION['id_copy'] = $row['id'];
+                    if(isset($_SESSION['mail_register']))unset($_SESSION['mail_register']);
+                    if(isset($_SESSION['name_register']))unset($_SESSION['name_register']);
+                    if(isset($_SESSION['surname_register']))unset($_SESSION['surname_register']);
+                    if(isset($_SESSION['s_name_register']))unset($_SESSION['s_name_register']);
+                    if(isset($_SESSION['picture_register']))unset($_SESSION['picture_register']);
 
-                        if(isset($_SESSION['mail_register']))unset($_SESSION['mail_register']);
-                        if(isset($_SESSION['name_register']))unset($_SESSION['name_register']);
-                        if(isset($_SESSION['surname_register']))unset($_SESSION['surname_register']);
-                        if(isset($_SESSION['type_register']))unset($_SESSION['type_register']);
-                        if(isset($_SESSION['s_name_register']))unset($_SESSION['s_name_register']);
-                        if(isset($_SESSION['picture_register']))unset($_SESSION['picture_register']);
-                        if(isset($_SESSION['alt_id_register']))unset($_SESSION['alt_id_register']);
-
-                        $_SESSION['online'] = true;
-
-                        $conn->close();
-                        header('Location: panel.php');
-                        exit();
-                    }
+                    $conn->close();
+                    $_SESSION['social_registration'] = true;
+                    header('Location: account-login.php');
+                    exit();
                 }
             }
+            $conn->close();
         }
     }
 
@@ -137,8 +135,8 @@
     if(isset($_SESSION['alt_id_register']))unset($_SESSION['alt_id_register']);
 
     $_SESSION['l_error'] = 'Error: Błąd zapytania do bazy!';
-    unset($_SESSION['g_access_token']);
-    $gClient->revokeToken();
+    if(isset($_SESSION['g_access_token']))unset($_SESSION['g_access_token']);
+    if(isset($_SESSION['f_access_token']))unset($_SESSION['f_access_token']);
     header('Location: index.php');
     exit();
 

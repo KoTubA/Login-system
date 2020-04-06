@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['registration'])) {
+    if(!isset($_SESSION['social_registration'])) {
         header('Location: index.php');
         exit();
     }

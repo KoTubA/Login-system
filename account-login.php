@@ -1,11 +1,16 @@
 <?php
-    //Logging in an unconnected account
+    //Logging in social account
     session_start();
-    if(!isset($_SESSION['registration'])) {
+    if(!isset($_SESSION['social_registration'])) {
         header('Location: index.php');
         exit();
     }
-    if(isset($_SESSION['registration']))unset($_SESSION['registration']);
+
+    $alt_id = $_SESSION['alt_id_register'];
+    $type = $_SESSION['type_register'];
+    if(isset($_SESSION['social_registration']))unset($_SESSION['social_registration']);
+    if(isset($_SESSION['alt_id_register']))unset($_SESSION['alt_id_register']);
+    if(isset($_SESSION['type_register']))unset($_SESSION['type_register']);
 
     require_once('connect.php');
 
@@ -14,21 +19,18 @@
         $_SESSION['l_error'] = "Error: ".$conn->connect_errno;
     }
     else {
-        if(isset($_SESSION['g_access_token'])) {
+        if($type==="google"){
             $column = "g_alt_id";
         }
-        else {
+        else if($type==="facebook"){
             $column = "f_alt_id";
         }
-        
-        $alt_id_register = $_SESSION['alt_id_register'];
 
-        $sql = "SELECT * FROM `users` WHERE $column='$alt_id_register'";
+        $sql = "SELECT * FROM `users` WHERE $column='$alt_id'";
         if($resultLogin = @$conn->query($sql)){
             $row = $resultLogin->fetch_assoc();
             $_SESSION['id_copy'] = $row['id'];
 
-            if(isset($_SESSION['alt_id_register']))unset($_SESSION['alt_id_register']);
             $_SESSION['online'] = true;
 
             $conn->close();
@@ -37,11 +39,12 @@
         }
         else {
             $_SESSION['l_error'] = 'Error: Błąd zapytania do bazy!';
+            $conn->close();
         }
     }
 
-    if(isset($_SESSION['alt_id_register']))unset($_SESSION['alt_id_register']);
-    unset($_SESSION['g_access_token']);
+    if(isset($_SESSION['g_access_token']))unset($_SESSION['g_access_token']);
+    if(isset($_SESSION['f_access_token']))unset($_SESSION['f_access_token']);
     header('Location: index.php');
     exit();
 

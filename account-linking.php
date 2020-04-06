@@ -1,7 +1,7 @@
 <?php
     //Linking account
     session_start();
-    if(!isset($_SESSION['registration'])) {
+    if(!isset($_SESSION['social_registration'])) {
         header('Location: index.php');
         exit();
     }
@@ -17,10 +17,10 @@
     $data9 = $_SESSION['picture_register'];
 
     //Check which social media is used to log in
-    if(isset($_SESSION['g_access_token'])) {
+    if($_SESSION['type_register']==="google"){
         $data10 = $_SESSION['alt_id_register'];
     }
-    else {
+    else if($_SESSION['type_register']==="facebook"){
         $data11 = $_SESSION['alt_id_register'];
     }
 
@@ -30,7 +30,6 @@
     if(isset($_SESSION['mail_register']))unset($_SESSION['mail_register']);
     if(isset($_SESSION['name_register']))unset($_SESSION['name_register']);
     if(isset($_SESSION['surname_register']))unset($_SESSION['surname_register']);
-    if(isset($_SESSION['type_register']))unset($_SESSION['type_register']);
     if(isset($_SESSION['s_name_register']))unset($_SESSION['s_name_register']);
     if(isset($_SESSION['picture_register']))unset($_SESSION['picture_register']);
     if(isset($_SESSION['id_account_exist']))unset($_SESSION['id_account_exist']);
@@ -68,10 +67,12 @@
             }
             else {
                 $_SESSION['l_error'] = 'Error: Błąd zapytania do bazy!';
+                $conn->close();
             }
         }
         else {
             $_SESSION['l_error'] = 'Error: Błąd zapytania do bazy!';
+            $conn->close();
         }
     }
 
