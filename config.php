@@ -1,10 +1,8 @@
 <?php
 
-    //Google configuration
-
+    //Google API configuration
     require_once "GoogleAPI/vendor/autoload.php";
 
-    //Google API configuration
     define("GOOGLE_CLIENT_ID","my_client_id");
     define("GOOGLE_CLIENT_SECRET","my_client_secret");
     define("GOOGLE_CLIENT_URL","http://localhost/Login-system/g-callback.php");
@@ -12,26 +10,20 @@
     $gClient = new Google_Client();
     $gClient->setClientId(GOOGLE_CLIENT_ID);
     $gClient->setClientSecret(GOOGLE_CLIENT_SECRET);
-    $gClient->setApplicationName("Login System Project");
+    $gClient->setApplicationName("Login System");
     $gClient->setRedirectUri(GOOGLE_CLIENT_URL);
     $gClient->addScope("email");
     $gClient->addScope("profile");
 
-    //Facebook configuration
+    //Facebook API configuration
     require_once "Facebook/autoload.php";
 
 	$FB = new \Facebook\Facebook([
 		'app_id' => 'my_app_id',
 		'app_secret' => 'my_app_secret',
-        'default_graph_version' => 'v2.6',
-        "persistent_data_handler"=>"session"
+        'default_graph_version' => 'v2.10'
 	]);
 
-
 	$helper = $FB->getRedirectLoginHelper();
-    
-    if (isset($_GET['state'])) {
-        $helper->getPersistentDataHandler()->set('state', $_GET['state']);  //this solution bypasses a CSRF check
-    }
 
 ?>
