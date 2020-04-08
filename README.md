@@ -133,7 +133,9 @@ This project uses the PHP client library [php-graph-sdk](https://github.com/face
 
 **To create an administrator account:**
 1. Create a user account using the registration system.
-2. Open DBMS and then manually for the appropriate user, edit the value of the `type` column in the `users` table from `user` to `admin`.
+2. Open DBMS and then manually for the appropriate user, edit the value of the `type` column in the `users` table from `user` to `admin`. 
+
+**An example of how it should look like:**
 
 | id | mail | login | password | name | surname | number | type | s_name | picture | g_alt_id | f_alt_id | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
