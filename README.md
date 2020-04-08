@@ -12,6 +12,8 @@
   - [Settings](#settings)
     - [Database connection configuration](#database-connection-configuration)
     - [ReCAPTCHA](#recaptcha)
+    - [Google Sign-In API](#google-sign-in-api)
+    - [Facebook Sign-In API](#facebook-sign-in-api)
     - [Adding a new Administrator](#adding-a-new-administrator)
 
 ## Getting Started
@@ -90,6 +92,10 @@ define('SITE_KEY', 'my_site_key');
 define('SECRET_KEY', 'my_secret_key');
         
 ```
+
+### Google Sign-In API
+
+### Facebook Sign-In API
 
 ### Adding a new Administrator
 
