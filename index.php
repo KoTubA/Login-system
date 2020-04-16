@@ -197,6 +197,7 @@
         if(isset($_SESSION['er_pass2']))unset($_SESSION['er_pass2']);
         if(isset($_SESSION['r_error']))unset($_SESSION['r_error']);
         if(isset($_SESSION['space']))unset($_SESSION['space']);
+        if(isset($_SESSION['d_correct']))unset($_SESSION['d_correct']);
         
     ?>
 </body>
