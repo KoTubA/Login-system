@@ -2,7 +2,7 @@
 
     session_start();
 
-    if((!isset($_POST['d_login']))||(!isset($_POST['d_pass']))) {
+    if($_SESSION['type_copy']=="user"||$_SESSION['type_copy']=="admin") {
         header('Location: panel.php');
         exit();
     }
@@ -15,33 +15,27 @@
     else {
 
         $id = $_SESSION['id_copy'];
-        $login = mysqli_real_escape_string($conn,$_POST['d_login']);
-        $pass = mysqli_real_escape_string($conn,$_POST['d_pass']);
+        $mail = $_SESSION['mail_copy'];
 
-        $sql = "SELECT * FROM `users` WHERE login='$login' || mail='$login'";
+        $sql = "SELECT * FROM `users` WHERE mail='$mail' AND id='$id'";
         if($result = @$conn->query($sql)) {
             $resultCheck = $result->num_rows;
                 if($resultCheck > 0) {
                     $row = $result->fetch_assoc();
                     
                     if($_SESSION['id_copy']==$row['id']) {
-                        if(password_verify($pass,$row['password'])){
-                            $sqlDelete = "DELETE FROM `users` WHERE login='$login' || mail='$login' AND id='$id'";
-                            if(@$conn->query($sqlDelete)) {
+                        $sqlDelete = "DELETE FROM `users` WHERE mail='$mail' AND id='$id'";
+                        if(@$conn->query($sqlDelete)) {
 
-                                $result->close();
-                                $conn->close();
+                            $result->close();
+                            $conn->close();
 
-                                $_SESSION['d_correct'] = 'Konto zostało usunięte!';
-                                header('Location: logout.php');
-                                exit();
-                            }
-                            else {
-                                $_SESSION['d_error'] = 'Error: Błąd zapytania do bazy!';
-                            }
+                            $_SESSION['d_correct'] = 'Konto zostało usunięte!';
+                            header('Location: logout.php');
+                            exit();
                         }
                         else {
-                            $_SESSION['de_delete'] = 'Błędny login lub hasło';
+                            $_SESSION['d_error'] = 'Error: Błąd zapytania do bazy!';
                         }
                     }
                     else {

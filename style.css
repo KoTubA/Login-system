@@ -65,9 +65,10 @@ main {
 
 .cnt-user-data {
     padding: 20px 0px;
+    width: 100%;
 }
 
-#change-data, #delete-account, #change-account {
+#change-data, #delete-account, #change-account, #set-account {
     padding: 0px !important;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -123,7 +124,7 @@ main {
     background-color: #FFF;
 }
 
-#passowrd-confirm {
+.confirm-data {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -142,15 +143,15 @@ main {
             box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.4)
 }
 
-#paddowrd-confirm-cnt {
-    padding: 40px 30px;
+.confirm-cnt {
+    padding: 50px 30px;
 }
 
-#paddowrd-confirm-cnt h5 {
+.confirm-cnt h5 {
     margin-bottom: 20px;
 }
 
-.passowrd-confirm-show {
+.confirm-data-show {
     opacity: 1 !important;
     visibility: visible !important;
 }
@@ -193,7 +194,7 @@ main {
     z-index: 10000;
 }
 
-#passowrd-confirm-close {
+.confirm-data-close {
     content: '';
     position: absolute;
     top: -15px;
@@ -634,6 +635,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     width: 100%;
     padding: 10px 50px;
     font-family: 'Muli', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .name-user-data {
@@ -656,6 +661,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     font-size: 21px;
     padding-top: 20px;
     font-weight: 700;
+    width: 100%;
 }
 
 #account-photo-min {
@@ -1356,6 +1362,7 @@ button {
 
 .google-login, .facebook-login {
     width: 100%;
+    margin-top: 10px;
 }
 
 .google-login:hover, .facebook-login:hover, .accept-connect {
@@ -1387,7 +1394,6 @@ button {
     -ms-user-select: none !important;
     user-select: none !important;
     width: 100%;
-    margin-top: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

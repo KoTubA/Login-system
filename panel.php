@@ -242,9 +242,9 @@
                                                 <div class="wrapper-user-data row justify-content-end">
                                                     <button type="button" class="btn btn-primary col-12 col-sm-4 col-3 change-data-btn">Zmień dane</button>
                                                 </div>
-                                                <div id="passowrd-confirm" class="col-7 col-lg-6">
-                                                    <div id="passowrd-confirm-close"><i class="icon-cancel"></i></div>
-                                                    <div id="paddowrd-confirm-cnt" class="col-12 col-xl-11">
+                                                <div class="confirm-data col-7 col-lg-6" id="confirm-data-change">
+                                                    <div class="confirm-data-close"><i class="icon-cancel"></i></div>
+                                                    <div class="confirm-cnt col-12 col-xl-11">
                                                         <h5>POTWIERDŹ ZMIANE</h5>
                                                         <div class="wrapp-input">
                                                             <div class="label-input-form">
@@ -258,104 +258,16 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <h4 class="user-data-header">Zmień hasło</h4>
-                                        <div class="cnt-user-data">
-                                            <form id="change-account" action="change-pass-account.php" class="col-12 col-xl-11" method="POST">
-                                                <div class="wrapper-user-data row feedback">
-                                                    <div class="name-user-data col-12 col-sm-4"></div>
-                                                    <div class="box-user-data col-12 col-sm-8">
-                                                        <div class="wrapp-input">
-                                                            <div class="invalid-feedback
-                                                            <?php 
-                                                                if(isset($_SESSION['ep_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ep_change'])||isset($_SESSION['ep_pass2'])){echo ' invalid-visible';}
-                                                                else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>">
-                                                            <?php 
-                                                                if(isset($_SESSION['ep_logon'])){echo $_SESSION['ep_logon'];}
-                                                                else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}
-                                                                else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}
-                                                                else if(isset($_SESSION['ep_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}
-                                                                else if (isset($_SESSION['ep_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-12 col-sm-4">Login lub e-mail</div>
-                                                    <div class="box-user-data col-12 col-sm-8">
-                                                        <div class="wrapp-input">
-                                                            <div class="label-input-form">
-                                                                <input class="form-control <?php if(isset($_SESSION['ep_logon'])) echo ' is-invalid'?>" type="text" name="p_login" spellcheck="false"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-12 col-sm-4">Hasło</div>
-                                                    <div class="box-user-data col-12 col-sm-8">
-                                                        <div class="wrapp-input<?php if(isset($_SESSION['ep_change'])) echo ' alert-validate error-alert'?>">
-                                                            <div class="label-input-form">
-                                                                <input class="form-control <?php if(isset($_SESSION['ep_logon'])||isset($_SESSION['ep_change'])) echo ' is-invalid'?>" type="password" name="p_pass" spellcheck="false"/>
-                                                            </div>
-                                                            <div class="error-message"><?php if(isset($_SESSION['ep_change'])) echo $_SESSION['ep_change']?></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                 <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-12 col-sm-4">Nowe hasło</div>
-                                                    <div class="box-user-data col-12 col-sm-8">
-                                                        <div class="wrapp-input<?php if(isset($_SESSION['ep_pass2'])) echo ' alert-validate error-alert'?>">
-                                                            <div class="label-input-form">
-                                                                <input class="form-control <?php if(isset($_SESSION['ep_logon'])||isset($_SESSION['ep_change'])||isset($_SESSION['ep_pass2'])) echo ' is-invalid'?>" type="password" name="p_pass2" spellcheck="false"/>
-                                                            </div>
-                                                            <div class="error-message"><?php if(isset($_SESSION['ep_pass2'])) echo $_SESSION['ep_pass2']?></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="wrapper-user-data row justify-content-end">
-                                                    <button type="submit" class="btn btn-primary col-12 col-sm-4 col-3">Zmień hasło</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <h4 class="user-data-header">Usuń konto</h4>
-                                        <div class="cnt-user-data">
-                                            <form id="delete-account" action="delete-account.php" class="col-12 col-xl-11" method="POST">
-                                                <div class="wrapper-user-data row feedback">
-                                                    <div class="name-user-data col-12 col-sm-4"></div>
-                                                    <div class="box-user-data col-12 col-sm-8">
-                                                        <div class="wrapp-input">
-                                                            <div class="invalid-feedback
-                                                            <?php 
-                                                                if(isset($_SESSION['de_delete'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>">
-                                                            <?php 
-                                                                if(isset($_SESSION['de_delete'])){echo $_SESSION['de_delete'];}
-                                                                else if(isset($_SESSION['d_error'])){echo $_SESSION['d_error'];}?></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-12 col-sm-4">Login lub e-mail</div>
-                                                    <div class="box-user-data col-12 col-sm-8">
-                                                        <div class="wrapp-input">
-                                                            <div class="label-input-form">
-                                                                <input class="form-control <?php if(isset($_SESSION['de_delete'])) echo ' is-invalid'?>" type="text" name="d_login" spellcheck="false"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="wrapper-user-data row">
-                                                    <div class="name-user-data col-12 col-sm-4">Hasło</div>
-                                                    <div class="box-user-data col-12 col-sm-8">
-                                                        <div class="wrapp-input">
-                                                            <div class="label-input-form">
-                                                                <input class="form-control <?php if(isset($_SESSION['de_delete'])) echo ' is-invalid'?>" type="password" name="d_pass" spellcheck="false"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="wrapper-user-data row justify-content-end">
-                                                    <button type="submit" class="btn btn-primary col-12 col-sm-4 col-3">Usuń konto</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        <?php 
+                                            if($_SESSION['type_copy']=="user"||$_SESSION['type_copy']=="admin"){
+                                                require_once('form-change-pass-account.php');
+                                                require_once('form-delete-account.php');
+                                            }
+                                            else {
+                                                require_once('form-set-pass-account.php');
+                                                require_once('form-delete-account-others.php');
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -371,16 +283,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="visual-effects.js"></script>
     <script>
-        $(document).ready(function() {
-            $('.change-data-btn').on('click',function(e){
+        document.addEventListener('DOMContentLoaded', function() {
+            //Confirm change data
+            document.querySelector('.change-data-btn').addEventListener('click',function(e){
                 e.preventDefault();
-                $('#passowrd-confirm').addClass('passowrd-confirm-show');
-                $('.overlay-pass').addClass('overlay-pass-show');
+                document.querySelector('#confirm-data-change').classList.add('confirm-data-show');
+                document.querySelector('.overlay-pass').classList.add('overlay-pass-show');
             });
 
-            $('.overlay-pass, #passowrd-confirm-close').on('click', function(){
-                $('#passowrd-confirm').removeClass('passowrd-confirm-show');
-                $('.overlay-pass').removeClass('overlay-pass-show');
+            const items = document.querySelectorAll('.overlay-pass, .confirm-data-close');
+            items.forEach(function(el){
+                el.addEventListener('click', function(){
+                    document.querySelectorAll('.confirm-data').forEach(function(e){
+                        e.classList.remove('confirm-data-show');
+                    });
+                    document.querySelectorAll('.overlay-pass').forEach(function(e){
+                        e.classList.remove('overlay-pass-show');
+                    });
+                });
+            });
+
+            //Confir delete account
+            document.querySelector('.delete-btn').addEventListener('click',function(e){
+                e.preventDefault();
+                document.querySelector('#confirm-data-delete').classList.add('confirm-data-show');
+                document.querySelector('.overlay-pass').classList.add('overlay-pass-show');
             });
         });
     </script>

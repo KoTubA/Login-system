@@ -27,37 +27,35 @@
                     $row = $result->fetch_assoc();
                     
                         if($_SESSION['id_copy']==$row['id']) {
-                            if(password_verify($pass,$row['password'])) {
-                                
-                                $flag = true;
-                                if (strlen($pass2)<8) {
-                                    $flag = false;
-                                    $_SESSION['ep_pass2'] = "Minimalna długość hasła to 8 znaków";
-                                }
-                                if($flag) {
-                                    if($pass!==$pass2) {
-                                        $sqlUpdate = "UPDATE `users` SET `password` = '$pass2_hash' WHERE login='$login' || mail='$login' AND id='$id'";
-                                        if(@$conn->query($sqlUpdate)) {
+                            $flag = true;
+                            if (strlen($pass)<8) {
+                                $flag = false;
+                                $_SESSION['ep_change'] = "Minimalna długość hasła to 8 znaków";
+                            }
+                            if (strlen($pass2)<8) {
+                                $flag = false;
+                                $_SESSION['ep_pass2'] = "Minimalna długość hasła to 8 znaków";
+                            }
+                            if($flag) {
+                                if($pass==$pass2) {
+                                    $sqlUpdate = "UPDATE `users` SET `password` = '$pass2_hash', `type` = 'user' WHERE login='$login' || mail='$login' AND id='$id'";
+                                    if(@$conn->query($sqlUpdate)) {
 
-                                            $result->close();
-                                            $conn->close();
+                                        $result->close();
+                                        $conn->close();
 
-                                            $_SESSION['p_correct'] = 'Hasło zostało zmienione!';
-                                            header('Location: panel.php');
-                                            exit();
-                                        }
-                                        else {
-                                            $_SESSION['p_error'] = 'Error: Błąd zapytania do bazy!';
-                                        }
+                                        $_SESSION['p_correct'] = 'Hasło zostało ustawione!';
+                                        header('Location: panel.php');
+                                        exit();
                                     }
                                     else {
-                                        $_SESSION['ep_change'] = 'Hasła są identyczne';
-                                        $_SESSION['ep_pass2'] = "Hasła są identyczne";
+                                        $_SESSION['p_error'] = 'Error: Błąd zapytania do bazy!';
                                     }
                                 }
-                            }
-                            else {
-                                $_SESSION['ep_logon'] = 'Błędny login lub hasło';
+                                else {
+                                    $_SESSION['ep_change'] = 'Hasła nie są identyczne';
+                                    $_SESSION['ep_pass2'] = "Hasła nie są identyczne";
+                                }
                             }
                         }
                         else {
