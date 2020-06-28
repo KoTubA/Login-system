@@ -2,6 +2,8 @@
     session_start();
 
     if(!isset($_SESSION['online'])) {
+        //Protection against session error ($_SESSION['online']-not exist, but $_SESSION['g_access_token'] and $_SESSION['f_access_token'] still exist)
+        session_destroy();
         header('Location: index.php');
         exit();
     }
@@ -303,7 +305,7 @@
                 });
             });
 
-            //Confir delete account
+            //Confirm delete account
             document.querySelector('.delete-btn').addEventListener('click',function(e){
                 e.preventDefault();
                 document.querySelector('#confirm-data-delete').classList.add('confirm-data-show');
