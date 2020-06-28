@@ -24,11 +24,10 @@
         if($result = @$conn->query($sql)) {
             $resultCheck = $result->num_rows;
                 if($resultCheck > 0) {
-                    $row = $result->fetch_assoc();
-                    
+                    while($row = $result->fetch_assoc()){
                         if($_SESSION['id_copy']==$row['id']) {
+                            if(isset($_SESSION['ep_logon']))unset($_SESSION['ep_logon']);
                             if(password_verify($pass,$row['password'])) {
-                                
                                 if($pass!==$pass2) {
                                     $flag = true;
                                     if (strlen($pass2)<8) {
@@ -59,10 +58,12 @@
                             else {
                                 $_SESSION['ep_logon'] = 'Błędny login lub hasło';
                             }
+                            break;
                         }
                         else {
                             $_SESSION['ep_logon'] = 'Błędny login lub hasło';
                         }
+                    }
                 }
                 else {
                     $_SESSION['ep_logon'] = 'Błędny login lub hasło';

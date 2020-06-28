@@ -200,7 +200,9 @@
         if(isset($_SESSION['r_error']))unset($_SESSION['r_error']);
         if(isset($_SESSION['space']))unset($_SESSION['space']);
         if(isset($_SESSION['d_correct']))unset($_SESSION['d_correct']);
-        
+        if(isset($_SESSION['fl_login']))unset($_SESSION['fl_login']);
+        if(isset($_SESSION['fr_mail']))unset($_SESSION['fr_mail']);
+        if(isset($_SESSION['fr_login']))unset($_SESSION['fr_login']);
     ?>
 </body>
 </html>

@@ -1259,17 +1259,17 @@ button {
 }
 
 .form-control:focus + label {
-    -webkit-transform: translateY(-25px);
-        -ms-transform: translateY(-25px);
-            transform: translateY(-25px);
+    -webkit-transform: translateY(-23px);
+        -ms-transform: translateY(-23px);
+            transform: translateY(-23px);
     color: var(--main-color);
     font-size: 0.9rem;
 }
 
 .form-control.hasvalue + label {
-    -webkit-transform: translateY(-25px) !important;
-        -ms-transform: translateY(-25px) !important;
-            transform: translateY(-25px) !important;
+    -webkit-transform: translateY(-23px) !important;
+        -ms-transform: translateY(-23px) !important;
+            transform: translateY(-23px) !important;
     font-size: 0.9rem;
 }
 

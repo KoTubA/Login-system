@@ -24,9 +24,9 @@
         if($result = @$conn->query($sql)) {
             $resultCheck = $result->num_rows;
                 if($resultCheck > 0) {
-                    $row = $result->fetch_assoc();
-                    
+                    while($row = $result->fetch_assoc()){
                         if($_SESSION['id_copy']==$row['id']) {
+                            if(isset($_SESSION['ep_logon']))unset($_SESSION['ep_logon']);
                             $flag = true;
                             if (strlen($pass)<8) {
                                 $flag = false;
@@ -57,13 +57,15 @@
                                     $_SESSION['ep_pass2'] = "Hasła nie są identyczne";
                                 }
                             }
+                            break;
                         }
                         else {
-                            $_SESSION['ep_logon'] = 'Błędny login lub hasło';
+                            $_SESSION['ep_logon'] = 'Błędny login lub e-mail';
                         }
+                    }
                 }
                 else {
-                    $_SESSION['ep_logon'] = 'Błędny login lub hasło';
+                    $_SESSION['ep_logon'] = 'Błędny login lub e-mail';
                 }
 
                 $result->close();
