@@ -29,13 +29,13 @@
                         if($_SESSION['id_copy']==$row['id']) {
                             if(password_verify($pass,$row['password'])) {
                                 
-                                $flag = true;
-                                if (strlen($pass2)<8) {
-                                    $flag = false;
-                                    $_SESSION['ep_pass2'] = "Minimalna długość hasła to 8 znaków";
-                                }
-                                if($flag) {
-                                    if($pass!==$pass2) {
+                                if($pass!==$pass2) {
+                                    $flag = true;
+                                    if (strlen($pass2)<8) {
+                                        $flag = false;
+                                        $_SESSION['ep_pass2'] = "Minimalna długość hasła to 8 znaków";
+                                    }
+                                    if($flag) {
                                         $sqlUpdate = "UPDATE `users` SET `password` = '$pass2_hash' WHERE login='$login' || mail='$login' AND id='$id'";
                                         if(@$conn->query($sqlUpdate)) {
 
@@ -50,10 +50,10 @@
                                             $_SESSION['p_error'] = 'Error: Błąd zapytania do bazy!';
                                         }
                                     }
-                                    else {
-                                        $_SESSION['ep_change'] = 'Hasła są identyczne';
-                                        $_SESSION['ep_pass2'] = "Hasła są identyczne";
-                                    }
+                                }
+                                else {
+                                    $_SESSION['ep_change'] = 'Hasła są identyczne';
+                                    $_SESSION['ep_pass2'] = "Hasła są identyczne";
                                 }
                             }
                             else {

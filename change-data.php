@@ -2,7 +2,7 @@
 
     session_start();
 
-    if((!isset($_POST['data_login']))||(!isset($_POST['data_pass']))) {
+    if((!isset($_POST['data_login']))||(!isset($_POST['data_mail']))) {
         header('Location: panel.php');
         exit();
     }
@@ -19,12 +19,11 @@
         $name = mysqli_real_escape_string($conn,$_POST['data_name']);
         $surname = mysqli_real_escape_string($conn,$_POST['data_surname']);
         $number = mysqli_real_escape_string($conn,$_POST['data_number']);
-        $pass = mysqli_real_escape_string($conn,$_POST['data_pass']);
         $s_name = mysqli_real_escape_string($conn,$_POST['radio-stacked']);
 
         $id_user = $_SESSION['id_copy'];
         
-        $sql = "SELECT * FROM `users` WHERE id='$id_user'"; 
+        $sql = "SELECT * FROM `users` WHERE id='$id_user'";
         if($result = @$conn->query($sql)) {
             $resultCheck = $result->num_rows;
                 if($resultCheck > 0) {
@@ -105,23 +104,18 @@
                         }
 
                         if($flag) {
-                            if(password_verify($pass,$row['password'])) {
-                                $sqlUpdate = "UPDATE `users` SET `login` = '$login', `mail` = '$mail', `name` = '$name', `surname` = '$surname', `number` = '$number', `s_name` = '$s_name' WHERE id='$id_user'";;
-                                if(@$conn->query($sqlUpdate)) {
+                            $sqlUpdate = "UPDATE `users` SET `login` = '$login', `mail` = '$mail', `name` = '$name', `surname` = '$surname', `number` = '$number', `s_name` = '$s_name' WHERE id='$id_user'";;
+                            if(@$conn->query($sqlUpdate)) {
 
-                                    $result->close();
-                                    $conn->close();
+                                $result->close();
+                                $conn->close();
 
-                                    $_SESSION['data_correct'] = 'Dane zostały zatkualizowane!';
-                                    header('Location: panel.php');
-                                    exit();
-                                }
-                                else {
-                                    $_SESSION['data_error'] = 'Error: Błąd zapytania do bazy!';
-                                }
+                                $_SESSION['data_correct'] = 'Dane zostały zatkualizowane!';
+                                header('Location: panel.php');
+                                exit();
                             }
                             else {
-                                $_SESSION['passe_update'] = 'Podane hasło nie zgadza się z obecnym';
+                                $_SESSION['data_error'] = 'Error: Błąd zapytania do bazy!';
                             }
                         }
                         else {

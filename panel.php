@@ -80,7 +80,7 @@
 </head>
 <body>
     <div id="page-wrapper">
-        <div class="overlay-pass"></div>
+        <div class="overlay-data"></div>
         <noscript>
             <div id="no-scirpt">
                 <div id="no-scirpt-cnt">Nasza platforma wymaga JavaScript do niezbędnego funkcjowania! <span>
@@ -149,7 +149,7 @@
                                     <div id="user-data">
                                         <h4 class="user-data-header">Dane konta</h4>
                                         <div class="cnt-user-data">
-                                            <form  id="change-data" action="change-data.php" class="col-12 col-xl-11" method="POST">
+                                            <form id="change-data" action="change-data.php" class="col-12 col-xl-11" method="POST">
                                                 <div class="wrapper-user-data row feedback">
                                                     <div class="name-user-data col-12 col-sm-4"></div>
                                                     <div class="box-user-data col-12 col-sm-8">
@@ -242,21 +242,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="wrapper-user-data row justify-content-end">
-                                                    <button type="button" class="btn btn-primary col-12 col-sm-4 col-3 change-data-btn">Zmień dane</button>
-                                                </div>
-                                                <div class="confirm-data col-7 col-lg-6" id="confirm-data-change">
-                                                    <div class="confirm-data-close"><i class="icon-cancel"></i></div>
-                                                    <div class="confirm-cnt col-12 col-xl-11">
-                                                        <h5>POTWIERDŹ ZMIANE</h5>
-                                                        <div class="wrapp-input">
-                                                            <div class="label-input-form">
-                                                                <input class="form-control <?php if(isset($_SESSION['passe_update'])) echo ' is-invalid'?>" type="password" name="data_pass" spellcheck="false"/>
-                                                                <label class="label-without-icon" for="data_pass">Hasło</label>
-                                                                <span class="icon-input"><i class="icon-lock"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary change-data-btn-confirm">Zmień dane</button>
-                                                    </div>
+                                                    <button type="submit" class="btn btn-primary col-12 col-sm-4 col-3 change-data-btn">Zmień dane</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -286,30 +272,23 @@
     <script src="visual-effects.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            //Confirm change data
-            document.querySelector('.change-data-btn').addEventListener('click',function(e){
+            //Confirm delete account
+            document.querySelector('.delete-btn').addEventListener('click',function(e){
                 e.preventDefault();
-                document.querySelector('#confirm-data-change').classList.add('confirm-data-show');
-                document.querySelector('.overlay-pass').classList.add('overlay-pass-show');
+                document.querySelector('#confirm-data-delete').classList.add('confirm-data-show');
+                document.querySelector('.overlay-data').classList.add('overlay-data-show');
             });
 
-            const items = document.querySelectorAll('.overlay-pass, .confirm-data-close');
+            const items = document.querySelectorAll('.overlay-data, .confirm-data-close');
             items.forEach(function(el){
                 el.addEventListener('click', function(){
                     document.querySelectorAll('.confirm-data').forEach(function(e){
                         e.classList.remove('confirm-data-show');
                     });
-                    document.querySelectorAll('.overlay-pass').forEach(function(e){
-                        e.classList.remove('overlay-pass-show');
+                    document.querySelectorAll('.overlay-data').forEach(function(e){
+                        e.classList.remove('overlay-data-show');
                     });
                 });
-            });
-
-            //Confirm delete account
-            document.querySelector('.delete-btn').addEventListener('click',function(e){
-                e.preventDefault();
-                document.querySelector('#confirm-data-delete').classList.add('confirm-data-show');
-                document.querySelector('.overlay-pass').classList.add('overlay-pass-show');
             });
         });
     </script>
