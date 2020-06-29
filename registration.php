@@ -72,9 +72,9 @@
     <script src="visual-effects.js"></script>
     <script>
         setTimeout(function(){
-            $('#system-registration-loader').addClass('hide-cnt');
-            $('#system-registration-wrapper').removeClass('hide-cnt');
-            $('#correct-registration-icon').addClass('correct-registration');
+            document.querySelector('#system-registration-loader').classList.add('hide-cnt');
+            document.querySelector('#system-registration-wrapper').classList.remove('hide-cnt');
+            document.querySelector('#correct-registration-icon').classList.add('correct-registration');
         },2500);
 
     </script>

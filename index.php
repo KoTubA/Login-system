@@ -8,7 +8,9 @@
 	$gloginURL = $gClient->createAuthUrl();
 
     //Facebook create a URL to obtain user authorization
-    $redirectURL = "http://localhost/Login-system/fb-callback.php";
+    $redirectURL = "https://localhost/Login-system/fb-callback.php";
+    //If you have problem with "redirect_uri" in localhost, change url to http/https
+
 	$permissions = ['email'];
 	$floginURL = $helper->getLoginUrl($redirectURL, $permissions);
     
@@ -197,7 +199,10 @@
         if(isset($_SESSION['er_pass2']))unset($_SESSION['er_pass2']);
         if(isset($_SESSION['r_error']))unset($_SESSION['r_error']);
         if(isset($_SESSION['space']))unset($_SESSION['space']);
-        
+        if(isset($_SESSION['d_correct']))unset($_SESSION['d_correct']);
+        if(isset($_SESSION['fl_login']))unset($_SESSION['fl_login']);
+        if(isset($_SESSION['fr_mail']))unset($_SESSION['fr_mail']);
+        if(isset($_SESSION['fr_login']))unset($_SESSION['fr_login']);
     ?>
 </body>
 </html>

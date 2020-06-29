@@ -14,6 +14,7 @@
     }
     else {
 
+        $id = $_SESSION['id_copy'];
         $login = mysqli_real_escape_string($conn,$_POST['p_login']);
         $pass = mysqli_real_escape_string($conn,$_POST['p_pass']);
         $pass2 = mysqli_real_escape_string($conn,$_POST['p_pass2']);
@@ -23,19 +24,18 @@
         if($result = @$conn->query($sql)) {
             $resultCheck = $result->num_rows;
                 if($resultCheck > 0) {
-                    $row = $result->fetch_assoc();
-                    
+                    while($row = $result->fetch_assoc()){
                         if($_SESSION['id_copy']==$row['id']) {
+                            if(isset($_SESSION['ep_logon']))unset($_SESSION['ep_logon']);
                             if(password_verify($pass,$row['password'])) {
-                                
-                                $flag = true;
-                                if (strlen($pass2)<5) {
-                                    $flag = false;
-                                    $_SESSION['ep_pass2'] = "Minimalna długość hasła to 8 znaków";
-                                }
-                                if($flag) {
-                                    if($pass!==$pass2) {
-                                        $sqlUpdate = "UPDATE `users` SET `password` = '$pass2_hash' WHERE login='$login' || mail='$login'";
+                                if($pass!==$pass2) {
+                                    $flag = true;
+                                    if (strlen($pass2)<8) {
+                                        $flag = false;
+                                        $_SESSION['ep_pass2'] = "Minimalna długość hasła to 8 znaków";
+                                    }
+                                    if($flag) {
+                                        $sqlUpdate = "UPDATE `users` SET `password` = '$pass2_hash' WHERE login='$login' || mail='$login' AND id='$id'";
                                         if(@$conn->query($sqlUpdate)) {
 
                                             $result->close();
@@ -49,19 +49,21 @@
                                             $_SESSION['p_error'] = 'Error: Błąd zapytania do bazy!';
                                         }
                                     }
-                                    else {
-                                        $_SESSION['ep_change'] = 'Hasła są identyczne';
-                                        $_SESSION['ep_pass2'] = "Hasła są identyczne";
-                                    }
+                                }
+                                else {
+                                    $_SESSION['ep_change'] = 'Hasła są identyczne';
+                                    $_SESSION['ep_pass2'] = "Hasła są identyczne";
                                 }
                             }
                             else {
                                 $_SESSION['ep_logon'] = 'Błędny login lub hasło';
                             }
+                            break;
                         }
                         else {
                             $_SESSION['ep_logon'] = 'Błędny login lub hasło';
                         }
+                    }
                 }
                 else {
                     $_SESSION['ep_logon'] = 'Błędny login lub hasło';

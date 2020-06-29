@@ -53,7 +53,7 @@
                         <div id="system-registration">
                             <div id="system-registration-connect">
                                 <h2>Połącz konta</h2>
-                                <p>Na adres <span><?php echo $_SESSION['mail_register']?></span> jest już założone konto <span><?php if(isset($_SESSION['type_account_exist'])){echo $_SESSION['type_account_exist'];}?></span>. Czy chesz połączyć to konto z kontem <?php echo ucfirst($_SESSION['type_register'])?></p>
+                                <p>Na adres <span><?php echo $_SESSION['mail_register']?></span> jest już założone konto<span><?php if(isset($_SESSION['type_account_exist'])){echo " ".$_SESSION['type_account_exist'];}?></span>. Czy chesz połączyć to konto z kontem <?php echo ucfirst($_SESSION['type_register'])?>?</p>
                                 <div id="account-data">
                                     <div id="account-data-existing">
                                         <div id="account-data-existing-name">

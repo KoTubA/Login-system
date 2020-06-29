@@ -8,7 +8,12 @@
         $gClient->revokeToken();
     }
     
+    if(isset($_SESSION['d_correct'])) $delete = $_SESSION['d_correct'];
     session_destroy();
+
+    //Proctect user which delete account
+    session_start();
+    $_SESSION['d_correct'] = $delete;
     header('Location: index.php');
     exit();
 ?>
