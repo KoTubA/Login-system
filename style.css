@@ -157,6 +157,10 @@ main {
     margin-bottom: 20px;
 }
 
+.confirm-cnt h6 {
+    text-align: center;
+}
+
 .confirm-data-show {
     opacity: 1 !important;
     visibility: visible !important;
