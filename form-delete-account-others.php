@@ -17,12 +17,14 @@
         <div class="wrapper-user-data row justify-content-end">
             <button type="submit" class="btn btn-primary delete-btn col-12 col-sm-4 col-3">Usuń konto</button>
         </div>
-        <div class="confirm-data col-7 col-lg-6" id="confirm-data-delete">
-            <div class="confirm-data-close"><i class="icon-cancel"></i></div>
-            <div class="confirm-cnt col-12 col-xl-11">
-                <h5>POTWIERDŹ ZMIANE</h5>
-                <h6>Czy napewno chcesz usunąć konto?</h6>
-                <button type="submit" class="btn btn-primary delete-btn-confirm">Usuń konto</button>
+        <div class="confirm-data" id="confirm-data-delete">
+            <div class="col-12 col-lg-6 confirm-data-cnt">
+                <div class="confirm-data-close"><i class="icon-cancel"></i></div>
+                <div class="confirm-cnt col-12 col-xl-11">
+                    <h5>POTWIERDŹ ZMIANE</h5>
+                    <h6>Czy napewno chcesz usunąć konto?</h6>
+                    <button type="submit" class="btn btn-primary delete-btn-confirm">Usuń konto</button>
+                </div>
             </div>
         </div>
     </form>
