@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION['online'])) {
+        header('Location: index.php');
+        exit();
+    }
+?>
 <h4 class="user-data-header">Ustaw hasło</h4>
 <div class="cnt-user-data">
     <form id="set-account" action="set-pass-account.php" class="col-12 col-xl-11" method="POST">

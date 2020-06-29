@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION['online'])) {
+        header('Location: index.php');
+        exit();
+    }
+?>
 <h4 class="user-data-header">Usuń konto</h4>
 <div class="cnt-user-data">
     <form id="delete-account" action="delete-account.php" class="col-12 col-xl-11" method="POST">
@@ -40,7 +46,7 @@
         <div class="confirm-data" id="confirm-data-delete">
             <div class="col-12 col-lg-6 confirm-data-cnt">
                 <div class="confirm-data-close"><i class="icon-cancel"></i></div>
-                <div class="confirm-cnt col-12 col-xl-11">
+                <div class="confirm-cnt col-12">
                     <h5>POTWIERDŹ ZMIANE</h5>
                     <h6>Czy napewno chcesz usunąć konto?</h6>
                     <button type="submit" class="btn btn-primary delete-btn-confirm">Usuń konto</button>
