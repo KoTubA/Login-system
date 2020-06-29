@@ -66,7 +66,7 @@
                                 <div id="login-form">
                                     <h5>ZALOGUJ SIĘ</h5>
                                     <form id="login-system" action="login.php" method="POST">
-                                        <div class="invalid-feedback<?php if(isset($_SESSION['e_logon'])||isset($_SESSION['l_error'])){echo ' invalid-visible';} else if (isset($_SESSION['d_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['e_logon'])){ echo $_SESSION['e_logon'];}else if(isset($_SESSION['l_error'])){echo $_SESSION['l_error'];}else if (isset($_SESSION['d_correct'])){echo $_SESSION['d_correct'];}?></div>
+                                        <div class="invalid-feedback<?php if(isset($_SESSION['e_logon'])||isset($_SESSION['l_error'])){echo ' invalid-visible';} else if (isset($_SESSION['d_correct'])){echo ' invalid-visible correct';}?>"><?php if(isset($_SESSION['e_logon'])){ echo $_SESSION['e_logon'];}else if(isset($_SESSION['l_error'])){echo $_SESSION['l_error'];}else if (isset($_SESSION['d_correct'])){echo $_SESSION['d_correct'];}?><i class="icon-cancel"></i></div>
                                         <div class="wrapp-input">
                                             <div class="label-input-form">
                                                 <input class="form-control<?php if(isset($_SESSION['e_logon'])) echo ' is-invalid'?>" type="text" name="l_login" spellcheck="false"
@@ -112,7 +112,7 @@
                                 <div id="register-form">
                                     <h5>ZAREJESTRUJ SIĘ</h5>
                                     <form id="register-system" action="register.php" method="POST">
-                                        <div class="invalid-feedback<?php if(isset($_SESSION['e_register'])||isset($_SESSION['r_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['e_register'])){echo $_SESSION['e_register'];}else if(isset($_SESSION['r_error'])){echo $_SESSION['r_error'];}?></div>
+                                        <div class="invalid-feedback<?php if(isset($_SESSION['e_register'])||isset($_SESSION['r_error'])) echo ' invalid-visible'?>"><?php if(isset($_SESSION['e_register'])){echo $_SESSION['e_register'];}else if(isset($_SESSION['r_error'])){echo $_SESSION['r_error'];}?><i class="icon-cancel"></i></div>
                                         <div class="wrapp-input<?php if(isset($_SESSION['er_mail'])) echo ' alert-validate error-alert'?>">
                                             <div class="label-input-form">
                                                 <input class="form-control <?php if(isset($_SESSION['er_mail'])) echo ' is-invalid'?>" type="text" name="r_mail" spellcheck="false" <?php if(isset($_SESSION['fr_mail'])){echo "value='".$_SESSION['fr_mail']."'";}?>/>
@@ -182,6 +182,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="visual-effects.js"></script>
+    <script src="visual-effects-mobile.js"></script>
     <script>
         grecaptcha.ready(function() {
             grecaptcha.execute('<?php echo SITE_KEY; ?>', {action: 'homepage'}).then(function(token) {

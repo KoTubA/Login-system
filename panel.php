@@ -132,6 +132,7 @@
                                 <div class="system-account-wrapper col-12">
                                     <div class="invalid-feedback mb-4
                                         <?php if(isset($_SESSION['panel_error'])) echo ' invalid-visible';?>"><?php if(isset($_SESSION['panel_error'])) echo $_SESSION['panel_error'];?>
+                                        <i class="icon-cancel"></i>
                                     </div>
                                     <div id="account-photo">
                                        <?php 
@@ -155,14 +156,15 @@
                                                     <div class="box-user-data col-12 col-sm-8">
                                                         <div class="wrapp-input">
                                                             <div class="invalid-feedback
-                                                            <?php 
-                                                                if(isset($_SESSION['datae_update'])||isset($_SESSION['data_error'])||isset($_SESSION['passe_update'])){echo ' invalid-visible';}
-                                                                else if (isset($_SESSION['data_correct'])){echo ' invalid-visible correct';}?>">
-                                                            <?php
-                                                                if(isset($_SESSION['datae_update'])){echo $_SESSION['datae_update'];}
-                                                                else if(isset($_SESSION['passe_update'])){echo $_SESSION['passe_update'];}
-                                                                else if(isset($_SESSION['data_error'])){echo $_SESSION['data_error'];}
-                                                                else if (isset($_SESSION['data_correct'])){echo $_SESSION['data_correct'];}?>
+                                                                <?php 
+                                                                    if(isset($_SESSION['datae_update'])||isset($_SESSION['data_error'])||isset($_SESSION['passe_update'])){echo ' invalid-visible';}
+                                                                    else if (isset($_SESSION['data_correct'])){echo ' invalid-visible correct';}?>">
+                                                                <?php
+                                                                    if(isset($_SESSION['datae_update'])){echo $_SESSION['datae_update'];}
+                                                                    else if(isset($_SESSION['passe_update'])){echo $_SESSION['passe_update'];}
+                                                                    else if(isset($_SESSION['data_error'])){echo $_SESSION['data_error'];}
+                                                                    else if (isset($_SESSION['data_correct'])){echo $_SESSION['data_correct'];}?>
+                                                                <i class="icon-cancel"></i>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -12,15 +12,17 @@
             <div class="box-user-data col-12 col-sm-8">
                 <div class="wrapp-input">
                     <div class="invalid-feedback
-                    <?php 
-                        if(isset($_SESSION['ep_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ep_change'])||isset($_SESSION['ep_pass2'])){echo ' invalid-visible';}
-                        else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>">
-                    <?php 
-                        if(isset($_SESSION['ep_logon'])){echo $_SESSION['ep_logon'];}
-                        else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}
-                        else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}
-                        else if(isset($_SESSION['ep_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}
-                        else if (isset($_SESSION['ep_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?></div>
+                        <?php 
+                            if(isset($_SESSION['ep_logon'])||isset($_SESSION['p_error'])||isset($_SESSION['ep_change'])||isset($_SESSION['ep_pass2'])){echo ' invalid-visible';}
+                            else if (isset($_SESSION['p_correct'])){echo ' invalid-visible correct';}?>">
+                        <?php 
+                            if(isset($_SESSION['ep_logon'])){echo $_SESSION['ep_logon'];}
+                            else if(isset($_SESSION['p_error'])){echo $_SESSION['p_error'];}
+                            else if (isset($_SESSION['p_correct'])){echo $_SESSION['p_correct'];}
+                            else if(isset($_SESSION['ep_change'])){echo "Upewnij się, czy wpisane dane są poprawne";}
+                            else if (isset($_SESSION['ep_pass2'])){echo "Upewnij się, czy wpisane dane są poprawne";}?>
+                        <i class="icon-cancel"></i>
+                    </div>
                 </div>
             </div>
         </div>

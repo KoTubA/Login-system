@@ -12,11 +12,13 @@
             <div class="box-user-data col-12 col-sm-8">
                 <div class="wrapp-input">
                     <div class="invalid-feedback
-                    <?php 
-                        if(isset($_SESSION['de_delete'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>">
-                    <?php 
-                        if(isset($_SESSION['de_delete'])){echo $_SESSION['de_delete'];}
-                        else if(isset($_SESSION['d_error'])){echo $_SESSION['d_error'];}?></div>
+                        <?php 
+                            if(isset($_SESSION['de_delete'])||isset($_SESSION['d_error'])) echo ' invalid-visible'?>">
+                        <?php 
+                            if(isset($_SESSION['de_delete'])){echo $_SESSION['de_delete'];}
+                            else if(isset($_SESSION['d_error'])){echo $_SESSION['d_error'];}?>
+                        <i class="icon-cancel"></i>    
+                    </div>
                 </div>
             </div>
         </div>

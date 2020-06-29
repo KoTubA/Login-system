@@ -1519,6 +1519,7 @@ button {
     color: #330303;
     margin: 10px 0px;
     font-family: 'Source Sans Pro', sans-serif;
+    position: relative;
 }
 
 .invalid-feedback:first-child {
@@ -1530,6 +1531,14 @@ button {
 .invalid-feedback:last-child {
     margin-bottom: 0px;
     margin-top: 0px;
+}
+
+.invalid-feedback .icon-cancel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 2px;
 }
 
 .invalid-visible {
