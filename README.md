@@ -58,7 +58,7 @@ password: admin
 ### External Resources/Plugins
 
 - Bootstrap-4.4.1
-- JQuery-3.4.1
+- JQuery-3.4.1 (just in case for bootstrap)
 - Fontello-5.0
 - Google APIs Client Library for PHP (v2.4.0)
 - Facebook SDK for PHP (v5.7.0)
