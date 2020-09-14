@@ -1,14 +1,16 @@
 # Table of Contents
 
 - [Table of Contents](#table-of-contents)
-  - [Getting Started](#getting-started)
-    - [Requirements](#requirements)
-    - [Installation](#installation)
-    - [Existing Account(s)](#existing-accounts)
+  - [Introduction](#introduction)
+  - [Features](#features)
   - [Components](#components)
     - [Languages](#languages)
     - [Development Environment](#development-environment)
     - [External Resources/Plugins](#external-resourcesplugins)
+  - [Getting Started](#getting-started)
+    - [Requirements](#requirements)
+    - [Installation](#installation)
+    - [Existing Account(s)](#existing-accounts)
   - [Settings](#settings)
     - [Database connection configuration](#database-connection-configuration)
     - [ReCAPTCHA](#recaptcha)
@@ -16,30 +18,21 @@
     - [Facebook Sign-In API](#facebook-sign-in-api)
     - [Adding a new Administrator](#adding-a-new-administrator)
 
-## Getting Started
+## Introduction
 
-### Requirements
-* PHP
-* Apache server
-* MySQL
-* Bootstrap
-* JQuery 
+**Login-system** is an open source project written in **PHP.** The application was developed for the school project "`Application in PHP".` The software enables logging in via social media, dynamic change of user data and complete deletion of the account.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KoTubA/Login-system/master/img/Login-system-logo.png" alt="Login-system logo">
+</p>
 
+## Features
 
-### Installation
-1. Import the `/setup/import.sql` file into the current DBMS. This file will also create a database (called `loginsystem`), so no previous action is needed. If the database name needs to be updated, it should be changed in the [configuration file](#database-connection-configuration) where the database title is declared.
-
-### Existing Account(s)
-The database already contains a sample `Administrator` account for testing things. Use this or go to the registration page and start creating new accounts.
-
-```php
-// Login data for an existing account.
-
-username: admin
-password: admin
-
-```
+* Login and registration system
+* Dynamic change of user data
+* Possibility to delete the account
+* Logging with "Google Sign-In" or "Facebook Login"
+* "ReCAPTCHA v3" security when creating a new account
 
 ## Components
 
@@ -62,6 +55,30 @@ password: admin
 - Fontello-5.0
 - Google APIs Client Library for PHP (v2.4.0)
 - Facebook SDK for PHP (v5.7.0)
+
+## Getting Started
+
+### Requirements
+* PHP
+* Apache server
+* MySQL
+* Bootstrap
+* JQuery 
+
+
+### Installation
+1. Import the `/setup/import.sql` file into the current DBMS. This file will also create a database (called `loginsystem`), so no previous action is needed. If the database name needs to be updated, it should be changed in the [configuration file](#database-connection-configuration) where the database title is declared.
+
+### Existing Account(s)
+The database already contains a sample `Administrator` account for testing things. Use this or go to the registration page and start creating new accounts.
+
+```php
+// Login data for an existing account.
+
+username: admin
+password: admin
+
+```
 
 ## Settings
 
